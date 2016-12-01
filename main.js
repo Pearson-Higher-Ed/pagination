@@ -1,7 +1,3 @@
-//
-// Change all references to 'MyComponent' in this file to your real component name!
-//
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ComponentOwner from './src/js/component-owner';
@@ -14,7 +10,7 @@ const translations = {
   'fr' : frJson
 };
 
-export default class MyComponent {
+export default class Pagination {
 
   constructor(config) {
 
@@ -28,7 +24,7 @@ export default class MyComponent {
 
     ReactDOM.render(
       <IntlProvider locale={locale} messages={translations[locale]}>
-        <ComponentOwner data={config} />
+        <ComponentOwner data={config} items={100} activePage={2} />
       </IntlProvider>,
       document.getElementById(config.elementId)
     );
@@ -39,4 +35,4 @@ export default class MyComponent {
 //
 // For events, use the Origami naming convention of pre-pending with 'o.'
 //
-document.body.addEventListener('o.InitMyComponent', e => new MyComponent(e.detail));
+document.body.addEventListener('o.InitPagination', e => new Pagination(e.detail));
