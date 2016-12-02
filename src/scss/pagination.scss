@@ -1,6 +1,7 @@
 @import '../../node_modules/pearson-elements/scss/mixins';
 @import '../../node_modules/pearson-elements/scss/variables';
 @import '../../node_modules/pearson-elements/scss/buttons';
+@import '../../node_modules/pearson-elements/scss/icons';
 @import '../../node_modules/pearson-elements/scss/responsive-utilities';
 
 .pagination {
@@ -20,5 +21,11 @@
     background: #337ab7;
     color: #fff;
     border: 1px solid #337ab7;
+    cursor: default;
+  }
+
+  &:disabled {
+    background: #fff;
+    border: 1px solid #d0d0d0;
   }
 }

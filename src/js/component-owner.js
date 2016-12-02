@@ -14,9 +14,12 @@ class ComponentOwner extends React.Component {
     maxButtons: 5
   };
 
-  renderPageButtons() {
-    const first = (
-      <PaginationButton key={0}>
+  createFirstLast() {
+    return [(
+      <PaginationButton
+        key={0}
+        active={this.props.activePage === 1}
+      >
         <div>
           <span className="pe-sr-only">
             Active page:
@@ -24,10 +27,11 @@ class ComponentOwner extends React.Component {
           1
         </div>
       </PaginationButton>
-    );
-
-    const last = (
-      <PaginationButton key={this.props.maxButtons}>
+    ), (
+      <PaginationButton
+        key={this.props.maxButtons}
+        active={this.props.activePage === this.props.items}
+      >
         <div>
         <span className="pe-sr-only">
           Active page:
@@ -35,12 +39,17 @@ class ComponentOwner extends React.Component {
         {this.props.items}
         </div>
       </PaginationButton>
-    );
+    )];
+  }
 
-    const pageButtons = Array.from(Array(this.props.items).keys()).slice(1, this.props.maxButtons - 1).map((item) => {
+  renderPageButtons() {
+    const [first, last] = this.createFirstLast();
+
+    const totalItems = Array.from(Array(this.props.items).keys());
+    const pageButtons = totalItems.slice(1, this.props.maxButtons - 1).map((item) => {
       return (
         <PaginationButton
-          active={this.props.activePage === item}
+          active={this.props.activePage === (item + 1)}
           key={item}
           onSelect={this.props.onSelect}
         >
@@ -62,19 +71,20 @@ class ComponentOwner extends React.Component {
       <div>
         <PaginationButton
           active={false}
+          disabled={this.props.activePage === 1}
         >
-          Prev
+          <i className="pe-icon--chevron-left" />
         </PaginationButton>
           {this.renderPageButtons()}
         <PaginationButton
           active={false}
+          disabled={this.props.activePage === this.props.items}
         >
-          Next
+          <i className="pe-icon--chevron-right" />
         </PaginationButton>
       </div>
     )
   }
-
 }
 
 export default ComponentOwner;
