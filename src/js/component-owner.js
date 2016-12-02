@@ -16,13 +16,13 @@ class ComponentOwner extends React.Component {
 
   renderPageButtons() {
     const first = (
-      <PaginationButton>
+      <PaginationButton key={0}>
         1
       </PaginationButton>
     );
 
     const last = (
-      <PaginationButton>
+      <PaginationButton key={this.props.maxButtons}>
         5
       </PaginationButton>
     );
@@ -32,6 +32,7 @@ class ComponentOwner extends React.Component {
         <PaginationButton
           active={this.props.activePage === item}
           key={item}
+          onSelect={this.props.onSelect}
         >
           {item + 1}
         </PaginationButton>

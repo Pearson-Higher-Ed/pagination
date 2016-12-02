@@ -1,3 +1,24 @@
-////
-/// Custom SCSS for component-specific styling goes here
-////
+// normalize.css
+@import '../../node_modules/pearson-elements/scss/mixins';
+@import '../../node_modules/pearson-elements/scss/variables';
+@import '../../node_modules/pearson-elements/scss/buttons';
+
+.pagination {
+  background: #fff;
+  color: #337ab7;
+  margin-left: -1px;
+  border-radius: 0;
+  position: relative;
+
+  &:focus {
+    z-index: 2;
+    outline-offset: -2px;
+    background: #fff;
+  }
+
+  &.active {
+    background: #337ab7;
+    color: #fff;
+    border: 1px solid #337ab7;
+  }
+}
