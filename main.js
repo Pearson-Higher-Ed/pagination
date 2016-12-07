@@ -10,6 +10,7 @@ const translations = {
   'fr' : frJson
 };
 
+const onSelect = (eventKey) => console.log(`selected ${eventKey}`);
 export default class Pagination {
 
   constructor(config) {
@@ -24,7 +25,7 @@ export default class Pagination {
 
     ReactDOM.render(
       <IntlProvider locale={locale} messages={translations[locale]}>
-        <ComponentOwner data={config} items={100} activePage={2} />
+        <ComponentOwner data={config} items={100} activePage={2} onSelect={onSelect} />
       </IntlProvider>,
       document.getElementById(config.elementId)
     );

@@ -21,6 +21,8 @@ class ComponentOwner extends React.Component {
       <PaginationButton
         key={0}
         active={this.props.activePage === 1}
+        onSelect={this.props.onSelect}
+        eventKey={1}
       >
         <div>
           <span className="pe-sr-only">
@@ -33,6 +35,8 @@ class ComponentOwner extends React.Component {
       <PaginationButton
         key={this.props.maxButtons}
         active={this.props.activePage === this.props.items}
+        onSelect={this.props.onSelect}
+        eventKey={this.props.items}
       >
         <div>
         <span className="pe-sr-only">
@@ -53,6 +57,7 @@ class ComponentOwner extends React.Component {
         <PaginationButton
           active={this.props.activePage === (item + 1)}
           key={item}
+          eventKey={item + 1}
           onSelect={this.props.onSelect}
         >
           <div>
@@ -74,6 +79,8 @@ class ComponentOwner extends React.Component {
         <PaginationButton
           active={false}
           disabled={this.props.activePage === 1}
+          onSelect={this.props.onSelect}
+          eventKey={this.props.activePage - 1}
         >
           <span className="pe-sr-only">
             <FormattedMessage {...messages.prevButton} />
@@ -86,6 +93,8 @@ class ComponentOwner extends React.Component {
         <PaginationButton
           active={false}
           disabled={this.props.activePage === this.props.items}
+          onSelect={this.props.onSelect}
+          eventKey={this.props.activePage + 1}
         >
           <span className="pe-sr-only">
             <FormattedMessage {...messages.nextButton} />
