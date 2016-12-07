@@ -22,7 +22,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Pearson-Higher-Ed/"
+    "url": "https://github.com/Pearson-Higher-Ed/pagination.git"
   },
   "dependencies": {
     "react-intl": "~2.0.1"
