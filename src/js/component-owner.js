@@ -19,7 +19,7 @@ class ComponentOwner extends React.Component {
   createFirstLast() {
     return [(
       <PaginationButton
-        key={0}
+        key="firstItem"
         active={this.props.activePage === 1}
         onSelect={this.props.onSelect}
         eventKey={1}
@@ -33,7 +33,7 @@ class ComponentOwner extends React.Component {
       </PaginationButton>
     ), (
       <PaginationButton
-        key={this.props.maxButtons}
+        key="maxItems"
         active={this.props.activePage === this.props.items}
         onSelect={this.props.onSelect}
         eventKey={this.props.items}
@@ -51,6 +51,12 @@ class ComponentOwner extends React.Component {
   renderPageButtons() {
     const [first, last] = this.createFirstLast();
     const totalItems = Array.from(Array(this.props.items).keys());
+
+
+    // if no buttons to the left when only displaying maxButtons, don't show ellipses on left
+    // if no buttons to the right when only displaying maxButtons, don't show ellipses on right
+
+    // otherwise show ellipses on left and/or right
 
     const startPage = (this.props.activePage - 1) - parseInt(this.props.maxButtons / 2, 10);
     const endPage = (startPage + this.props.maxButtons);
@@ -72,6 +78,17 @@ class ComponentOwner extends React.Component {
         </PaginationButton>
       );
     });
+
+    if (startPage > 2) {
+      pageButtons[0] = (
+        <PaginationButton
+          key="frontEllipses"
+          disabled={true}
+        >
+          ...
+        </PaginationButton>
+      );
+    }
 
     return [first, ...pageButtons, last];
   }
