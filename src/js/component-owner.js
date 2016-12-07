@@ -13,7 +13,7 @@ class ComponentOwner extends React.Component {
   };
 
   static defaultProps = {
-    maxButtons: 5
+    maxButtons: 7
   };
 
   createFirstLast() {
@@ -50,9 +50,12 @@ class ComponentOwner extends React.Component {
 
   renderPageButtons() {
     const [first, last] = this.createFirstLast();
-
     const totalItems = Array.from(Array(this.props.items).keys());
-    const pageButtons = totalItems.slice(1, this.props.maxButtons - 1).map((item) => {
+
+    const startPage = (this.props.activePage - 1) - parseInt(this.props.maxButtons / 2, 10);
+    const endPage = (startPage + this.props.maxButtons);
+
+    const pageButtons = totalItems.slice(startPage, endPage).map((item) => {
       return (
         <PaginationButton
           active={this.props.activePage === (item + 1)}
