@@ -1,6 +1,8 @@
 import '../scss/pagination.scss';
 import React, {PropTypes} from 'react';
+import {FormattedMessage} from 'react-intl';
 import PaginationButton from './PaginationButton';
+import {messages} from './defaultMessages';
 
 class ComponentOwner extends React.Component {
   static propTypes = {
@@ -19,7 +21,7 @@ class ComponentOwner extends React.Component {
       <PaginationButton key={0}>
         <div>
           <span className="pe-sr-only">
-            Active page:
+            <FormattedMessage {...messages.activePage} />
           </span>
           1
         </div>
@@ -30,7 +32,7 @@ class ComponentOwner extends React.Component {
       <PaginationButton key={this.props.maxButtons}>
         <div>
         <span className="pe-sr-only">
-          Active page:
+          <FormattedMessage {...messages.activePage} />
         </span>
         {this.props.items}
         </div>
@@ -46,7 +48,7 @@ class ComponentOwner extends React.Component {
         >
           <div>
             <span className="pe-sr-only">
-              Active page:
+              <FormattedMessage {...messages.activePage} />
             </span>
             {item + 1}
           </div>
@@ -63,13 +65,23 @@ class ComponentOwner extends React.Component {
         <PaginationButton
           active={false}
         >
-          Prev
+          <span className="pe-sr-only">
+            <FormattedMessage {...messages.prevButton} />
+          </span>
+          <span aria-hidden="true">
+            Prev
+          </span>
         </PaginationButton>
           {this.renderPageButtons()}
         <PaginationButton
           active={false}
         >
-          Next
+          <span className="pe-sr-only">
+            <FormattedMessage {...messages.nextButton} />
+          </span>
+          <span aria-hidden="true">
+            Next
+          </span>
         </PaginationButton>
       </div>
     )
