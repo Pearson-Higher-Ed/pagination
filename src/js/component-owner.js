@@ -1,6 +1,8 @@
 import '../scss/pagination.scss';
 import React, {PropTypes} from 'react';
+import {FormattedMessage} from 'react-intl';
 import PaginationButton from './PaginationButton';
+import {messages} from './defaultMessages';
 
 class ComponentOwner extends React.Component {
   static propTypes = {
@@ -22,7 +24,7 @@ class ComponentOwner extends React.Component {
       >
         <div>
           <span className="pe-sr-only">
-            Active page:
+            <FormattedMessage {...messages.activePage} />
           </span>
           1
         </div>
@@ -34,7 +36,7 @@ class ComponentOwner extends React.Component {
       >
         <div>
         <span className="pe-sr-only">
-          Active page:
+          <FormattedMessage {...messages.activePage} />
         </span>
         {this.props.items}
         </div>
@@ -55,7 +57,7 @@ class ComponentOwner extends React.Component {
         >
           <div>
             <span className="pe-sr-only">
-              Active page:
+              <FormattedMessage {...messages.activePage} />
             </span>
             {item + 1}
           </div>
@@ -73,14 +75,24 @@ class ComponentOwner extends React.Component {
           active={false}
           disabled={this.props.activePage === 1}
         >
-          <i className="pe-icon--chevron-left" />
+          <span className="pe-sr-only">
+            <FormattedMessage {...messages.prevButton} />
+          </span>
+          <span aria-hidden="true">
+            Prev
+          </span>
         </PaginationButton>
           {this.renderPageButtons()}
         <PaginationButton
           active={false}
           disabled={this.props.activePage === this.props.items}
         >
-          <i className="pe-icon--chevron-right" />
+          <span className="pe-sr-only">
+            <FormattedMessage {...messages.nextButton} />
+          </span>
+          <span aria-hidden="true">
+            Next
+          </span>
         </PaginationButton>
       </div>
     )

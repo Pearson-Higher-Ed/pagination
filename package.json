@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "@pearson-components/pagination",
   "version": "0.0.0",
   "description": "",
   "main": "./build/dist.pagination.js",
@@ -32,6 +32,7 @@
     "babel-core": "~6.3.17",
     "babel-eslint": "~4.1.6",
     "babel-loader": "~6.2.0",
+    "babel-plugin-react-intl": "^2.2.0",
     "babel-polyfill": "~6.7.4",
     "babel-preset-es2015": "~6.3.13",
     "babel-preset-react": "~6.3.13",
