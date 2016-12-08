@@ -25,7 +25,7 @@ export default class Pagination {
 
     ReactDOM.render(
       <IntlProvider locale={locale} messages={translations[locale]}>
-        <ComponentOwner data={config} items={100} activePage={2} onSelect={onSelect} />
+        <ComponentOwner data={config} items={100} activePage={1} onSelect={onSelect} />
       </IntlProvider>,
       document.getElementById(config.elementId)
     );

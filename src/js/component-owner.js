@@ -49,6 +49,7 @@ class ComponentOwner extends React.Component {
   }
 
   renderPageButtons() {
+    let startPage = (this.props.activePage - 1) - parseInt(this.props.maxButtons / 2, 10);
     const [first, last] = this.createFirstLast();
     const totalItems = Array.from(Array(this.props.items).keys());
 
@@ -57,8 +58,17 @@ class ComponentOwner extends React.Component {
     // if no buttons to the right when only displaying maxButtons, don't show ellipses on right
 
     // otherwise show ellipses on left and/or right
-
-    const startPage = (this.props.activePage - 1) - parseInt(this.props.maxButtons / 2, 10);
+    
+    if (this.props.activePage <= parseInt(this.props.maxButtons / 2, 10) + 1) {
+      startPage = 1;
+    }
+    if (this.props.activePage >= this.props.items - parseInt(this.props.maxButtons / 2, 10)) {
+      startPage = this.props.items - this.props.maxButtons - 1;
+    } 
+    // else {
+    //   startPage = (this.props.activePage - 1) - parseInt(this.props.maxButtons / 2, 10);
+    // }
+    
     const endPage = (startPage + this.props.maxButtons);
 
     const pageButtons = totalItems.slice(startPage, endPage).map((item) => {
@@ -79,10 +89,21 @@ class ComponentOwner extends React.Component {
       );
     });
 
-    if (startPage > 2) {
+    if (startPage > 1) {
       pageButtons[0] = (
         <PaginationButton
           key="frontEllipses"
+          disabled={true}
+        >
+          ...
+        </PaginationButton>
+      );
+    }
+      
+    if (last.props.eventKey > pageButtons[this.props.maxButtons - 1].props.eventKey + 1) {
+      pageButtons[this.props.maxButtons - 1] = (
+        <PaginationButton
+          key="backEllipses"
           disabled={true}
         >
           ...
