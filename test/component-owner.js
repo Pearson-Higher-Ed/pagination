@@ -21,24 +21,25 @@ describe('Component Owner Suite', () => {
   it('shallowly renders the component owner using React TestUtils', () => {
 
     const {intl} = intlProvider.getChildContext();
+
     const targetData = {
       elementId: 'test-target',
       greeting: 'Hello world!'
     };
 
     renderer.render(
-      <ComponentOwner.WrappedComponent
+      <ComponentOwner
         data={targetData}
-        intl={intl} />
+        intl={intl}
+        activePage={true}
+      />
       , {intl}
     );
 
-    expect(renderer.getRenderOutput()).toEqualJSX(
-      <div className="pe-inlineblock"><button className="pe-btn pe-btn--primary" onClick={function noRefCheck() {}}>say hello</button>
-        &nbsp;
-        <span className="pe-input"><input type="text" value="" placeholder="placeholder" /></span>
-      </div>
-    );
+
+    const pagination = renderer.getRenderOutput();
+    console.log(pagination.props.children[0].props.children[1]);
+    expect(pagination.props.children[0].props.children[1].props.children).toEqual('Prev');
   });
 
   it('renders the correct text when the button is clicked, in a document provided by jsdom', () => {

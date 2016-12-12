@@ -61,7 +61,7 @@ class ComponentOwner extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="pagination">
         <PaginationButton
           active={false}
         >
@@ -84,7 +84,7 @@ class ComponentOwner extends React.Component {
           </span>
         </PaginationButton>
       </div>
-    )
+    );
   }
 
 }
