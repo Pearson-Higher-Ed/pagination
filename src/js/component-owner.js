@@ -65,9 +65,6 @@ class ComponentOwner extends React.Component {
     if (this.props.activePage >= this.props.items - parseInt(this.props.maxButtons / 2, 10)) {
       startPage = this.props.items - this.props.maxButtons - 1;
     } 
-    // else {
-    //   startPage = (this.props.activePage - 1) - parseInt(this.props.maxButtons / 2, 10);
-    // }
     
     const endPage = (startPage + this.props.maxButtons);
 
