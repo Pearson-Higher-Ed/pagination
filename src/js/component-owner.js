@@ -113,7 +113,7 @@ class ComponentOwner extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="paginationGroup">
         <PaginationButton
           active={false}
           disabled={this.props.activePage === 1}
