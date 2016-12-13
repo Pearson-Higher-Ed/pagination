@@ -49,25 +49,28 @@ class ComponentOwner extends React.Component {
   }
 
   renderPageButtons() {
-    let startPage = (this.props.activePage - 1) - parseInt(this.props.maxButtons / 2, 10);
     const [first, last] = this.createFirstLast();
     const totalItems = Array.from(Array(this.props.items).keys());
 
-
     // if no buttons to the left when only displaying maxButtons, don't show ellipses on left
     // if no buttons to the right when only displaying maxButtons, don't show ellipses on right
-
     // otherwise show ellipses on left and/or right
-    
-    if (this.props.activePage <= parseInt(this.props.maxButtons / 2, 10) + 1) {
+
+    let displayButtons = this.props.maxButtons;
+    if (this.props.items < this.props.maxButtons + 2) {
+      displayButtons = this.props.items - 2;
+    }
+
+    let startPage = (this.props.activePage - 1) - parseInt(displayButtons / 2, 10);
+    if (this.props.activePage <= parseInt(displayButtons / 2, 10) + 1) {
       startPage = 1;
     }
-    if (this.props.activePage >= this.props.items - parseInt(this.props.maxButtons / 2, 10)) {
-      startPage = this.props.items - this.props.maxButtons - 1;
+    if (this.props.activePage >= this.props.items - parseInt(displayButtons / 2, 10)) {
+      startPage = this.props.items - displayButtons - 1;
     } 
     
-    const endPage = (startPage + this.props.maxButtons);
-
+    const endPage = (startPage + displayButtons);
+    
     const pageButtons = totalItems.slice(startPage, endPage).map((item) => {
       return (
         <PaginationButton
@@ -96,16 +99,18 @@ class ComponentOwner extends React.Component {
         </PaginationButton>
       );
     }
-      
-    if (last.props.eventKey > pageButtons[this.props.maxButtons - 1].props.eventKey + 1) {
-      pageButtons[this.props.maxButtons - 1] = (
-        <PaginationButton
-          key="backEllipses"
-          disabled={true}
-        >
-          ...
-        </PaginationButton>
-      );
+    
+    if (displayButtons > 0) {
+      if (last.props.eventKey > pageButtons[displayButtons - 1].props.eventKey + 1) {
+        pageButtons[displayButtons - 1] = (
+          <PaginationButton
+            key="backEllipses"
+            disabled={true}
+          >
+            ...
+          </PaginationButton>
+        );
+      }
     }
 
     return [first, ...pageButtons, last];
