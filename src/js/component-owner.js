@@ -85,7 +85,7 @@ class ComponentOwner extends React.Component {
             </span>
             {item + 1}
           </div>
-        </PaginationButton>g
+        </PaginationButton>
       );
     });
 

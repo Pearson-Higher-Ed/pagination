@@ -10,12 +10,9 @@ const translations = {
   'fr' : frJson
 };
 
-let activePage = 1;
-
 const onSelect = (eventKey) => {
 
   console.log(`selected ${eventKey}`);
-  activePage = eventKey
 };
 
 export default class Pagination {
