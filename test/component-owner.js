@@ -15,49 +15,25 @@ describe('Component Owner Suite', () => {
 
   beforeEach(() => {
     renderer = TestUtils.createRenderer();
-    intlProvider = new IntlProvider({locale: 'en'}, {});
+    intlProvider = new IntlProvider({ locale: 'en' }, {});
   });
 
   it('shallowly renders the component owner using React TestUtils', () => {
 
-    const {intl} = intlProvider.getChildContext();
-    const targetData = {
-      elementId: 'test-target',
-      greeting: 'Hello world!'
-    };
+    const { intl } = intlProvider.getChildContext();
 
     renderer.render(
-      <ComponentOwner.WrappedComponent
-        data={targetData}
-        intl={intl} />
-      , {intl}
+      <ComponentOwner
+        items={3}
+        intl={intl}
+        activePage={1}
+      />
+      , { intl }
     );
 
-    expect(renderer.getRenderOutput()).toEqualJSX(
-      <div className="pe-inlineblock"><button className="pe-btn pe-btn--primary" onClick={function noRefCheck() {}}>say hello</button>
-        &nbsp;
-        <span className="pe-input"><input type="text" value="" placeholder="placeholder" /></span>
-      </div>
-    );
+
+    const pagination = renderer.getRenderOutput();
+    expect(pagination.props.children[0].props.children[1].props.children).toEqual('Prev');
+    expect(pagination.props.children[2].props.children[1].props.children).toEqual('Next');
   });
-
-  it('renders the correct text when the button is clicked, in a document provided by jsdom', () => {
-
-    const {intl} = intlProvider.getChildContext();
-    const targetData = {
-      elementId: 'test-target',
-      greeting: 'Hello test!'
-    };
-    const locale = 'en';
-    const translations = {
-      'en' : {}
-    };
-
-    const container = TestUtils.renderIntoDocument(<IntlProvider locale={locale} messages={translations[locale]}><ComponentOwner data={targetData} intl={intl} /></IntlProvider>);
-    const button = TestUtils.findRenderedDOMComponentWithTag(container, 'button');
-    const input =  TestUtils.findRenderedDOMComponentWithTag(container, 'input');
-    TestUtils.Simulate.click(button);
-    expect(input.value).toEqual('Hello test!');
-  });
-
 });

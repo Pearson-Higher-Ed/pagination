@@ -1,8 +1,8 @@
 import '../scss/pagination.scss';
-import React, {PropTypes} from 'react';
-import {FormattedMessage} from 'react-intl';
+import React, { PropTypes } from 'react';
+import { FormattedMessage } from 'react-intl';
 import PaginationButton from './PaginationButton';
-import {messages} from './defaultMessages';
+import { messages } from './defaultMessages';
 
 class ComponentOwner extends React.Component {
   static propTypes = {
@@ -13,7 +13,7 @@ class ComponentOwner extends React.Component {
   };
 
   static defaultProps = {
-    maxButtons: 7
+    maxButtons: 5
   };
 
   createFirstLast() {
@@ -72,6 +72,7 @@ class ComponentOwner extends React.Component {
     const endPage = (startPage + displayButtons);
     
     const pageButtons = totalItems.slice(startPage, endPage).map((item) => {
+      console.log(item+1);
       return (
         <PaginationButton
           active={this.props.activePage === (item + 1)}
@@ -100,23 +101,24 @@ class ComponentOwner extends React.Component {
       );
     }
     
-    if (displayButtons > 0) {
-      if (last.props.eventKey > pageButtons[displayButtons - 1].props.eventKey + 1) {
-        pageButtons[displayButtons - 1] = (
-          <PaginationButton
-            key="backEllipses"
-            disabled={true}
-          >
-            ...
-          </PaginationButton>
-        );
-      }
-    }
+    const checkBackEllipses = displayButtons > 0;
 
+    if (checkBackEllipses && last.props.eventKey > pageButtons[displayButtons - 1].props.eventKey + 1) {
+      pageButtons[displayButtons - 1] = (
+        <PaginationButton
+          key="backEllipses"
+          disabled={true}
+        >
+          ...
+        </PaginationButton>
+      );
+    }
     return [first, ...pageButtons, last];
   }
 
   render() {
+
+    console.log('activePGE', this.props.activePage);
     return (
       <div className="paginationGroup">
         <PaginationButton
@@ -147,7 +149,7 @@ class ComponentOwner extends React.Component {
           </span>
         </PaginationButton>
       </div>
-    )
+    );
   }
 }
 
