@@ -1,17 +1,12 @@
-import MyComponent from '../main'; // to demo direct API usage
+import MyComponent, { Pagination } from '../main'; // to demo direct API usage
+import React from 'react';
+import { IntlProvider } from 'react-intl';
+import ReactDOM from 'react-dom';
 
 // When available on npm, consumer usage would be similar to:
 // import MyComponent from '@pearson-components/[component-name]'
 
 function init() {
-
-  // Demo eventing API
-  document.body.dispatchEvent(new CustomEvent('o.InitMyComponent', {
-    detail: {
-      elementId: 'demo-target1',
-      greeting: 'Hello world!'
-    }
-  }));
 
   // Demo direct API
   new MyComponent({
@@ -20,6 +15,14 @@ function init() {
     locale: 'fr'
   });
 
+
+  const onSelect = () => console.log('selected');
+  ReactDOM.render(
+    <IntlProvider locale="en">
+      <Pagination items={100} activePage={1} onSelect={onSelect} />
+    </IntlProvider>,
+    document.getElementById('demo-target1')
+  );
 }
 
 window.onload = init;
