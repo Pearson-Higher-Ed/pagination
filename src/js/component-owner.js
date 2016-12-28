@@ -67,12 +67,11 @@ class ComponentOwner extends React.Component {
     }
     if (this.props.activePage >= this.props.items - parseInt(displayButtons / 2, 10)) {
       startPage = this.props.items - displayButtons - 1;
-    } 
-    
+    }
+
     const endPage = (startPage + displayButtons);
-    
+
     const pageButtons = totalItems.slice(startPage, endPage).map((item) => {
-      console.log(item+1);
       return (
         <PaginationButton
           active={this.props.activePage === (item + 1)}
@@ -100,7 +99,7 @@ class ComponentOwner extends React.Component {
         </PaginationButton>
       );
     }
-    
+
     const checkBackEllipses = displayButtons > 0;
 
     if (checkBackEllipses && last.props.eventKey > pageButtons[displayButtons - 1].props.eventKey + 1) {
@@ -117,8 +116,6 @@ class ComponentOwner extends React.Component {
   }
 
   render() {
-
-    console.log('activePGE', this.props.activePage);
     return (
       <div className="paginationGroup">
         <PaginationButton
