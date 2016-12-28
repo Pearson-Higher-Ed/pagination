@@ -10,7 +10,7 @@ function init() {
 
   // Demo direct API
   new MyComponent({
-    elementId: 'demo-target2',
+    elementId: 'demo-target1',
     greeting: 'Bonjour le monde!',
     locale: 'fr'
   });
@@ -21,7 +21,28 @@ function init() {
     <IntlProvider locale="en">
       <Pagination items={100} activePage={1} onSelect={onSelect} />
     </IntlProvider>,
-    document.getElementById('demo-target1')
+    document.getElementById('demo-target2')
+  );
+
+  ReactDOM.render(
+    <IntlProvider locale="en">
+      <Pagination items={5} activePage={1} onSelect={onSelect} />
+    </IntlProvider>,
+    document.getElementById('demo-target3')
+  );
+
+  ReactDOM.render(
+    <IntlProvider locale="en">
+      <Pagination items={100} activePage={99} onSelect={onSelect} />
+    </IntlProvider>,
+    document.getElementById('demo-target4')
+  );
+
+  ReactDOM.render(
+    <IntlProvider locale="en">
+      <Pagination items={100} activePage={40} onSelect={onSelect} />
+    </IntlProvider>,
+    document.getElementById('demo-target5')
   );
 }
 
