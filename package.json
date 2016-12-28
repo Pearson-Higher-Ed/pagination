@@ -1,7 +1,7 @@
 {
   "name": "@pearson-components/pagination",
   "version": "0.0.0",
-  "description": "",
+  "description": "Pagination buttons",
   "main": "./build/dist.pagination.js",
   "scripts": {
     "dev-setup": "node ./npm_scripts/dev-setup.js",
@@ -18,7 +18,7 @@
     "verify": "node ./npm_scripts/verify.js",
     "copy-utils": "node ./node_modules/@pearson-components/npm-scripts/npm_scripts/cross-platform.js"
   },
-  "author": "",
+  "author": "Pearson",
   "license": "MIT",
   "repository": {
     "type": "git",
