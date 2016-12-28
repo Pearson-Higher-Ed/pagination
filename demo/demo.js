@@ -19,7 +19,7 @@ function init() {
   const onSelect = () => console.log('selected');
   ReactDOM.render(
     <IntlProvider locale="en">
-      <Pagination items={7} activePage={2} onSelect={onSelect} />
+      <Pagination items={100} activePage={1} onSelect={onSelect} />
     </IntlProvider>,
     document.getElementById('demo-target1')
   );
