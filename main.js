@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Pagination from './src/js/component-owner';
 import PaginationButton from './src/js/PaginationButton';
+import PaginationIntl from './src/js/PaginationIntl';
 
 // i18n, set up for French out-of-the-box
-import {addLocaleData, IntlProvider} from 'react-intl';
-import frLocaleData from 'react-intl/locale-data/fr';
 import frJson from './translations/fr.json';
 const translations = {
   'fr' : frJson
@@ -19,8 +18,6 @@ const onSelect = (eventKey) => {
 export default class PaginationContainer {
 
   constructor(config) {
-
-    addLocaleData(frLocaleData);
     this.init(config);
   }
 
@@ -29,18 +26,15 @@ export default class PaginationContainer {
     const locale = config.locale ? config.locale : 'en';
 
     ReactDOM.render(
-      <IntlProvider locale={locale} messages={translations[locale]}>
-        <Pagination data={config} items={100} activePage={1} onSelect={onSelect} />
-      </IntlProvider>,
+      <PaginationIntl locale={locale} messages={translations[locale]} onSelect={onSelect}/>,
       document.getElementById(config.elementId)
     );
   }
 
 }
-
 //
 // For events, use the Origami naming convention of pre-pending with 'o.'
 //
 document.body.addEventListener('o.InitPagination', e => new PaginationContainer(e.detail));
 
-export { Pagination, PaginationButton }
+export { Pagination, PaginationButton, PaginationIntl };
