@@ -12,14 +12,17 @@ const translations = {
 };
 
 const onSelect = (eventKey) => {
-
-  console.log(`selected ${eventKey}`);
+  document.dispatchEvent(new CustomEvent('o-pagination-select', {
+    detail: {
+      selectedPage: eventKey
+    }
+  }))
 };
 
 export default class PaginationContainer {
 
   constructor(config) {
-
+    document.addEventListener('o-pagination-setActive', )
     addLocaleData(frLocaleData);
     this.init(config);
   }
@@ -30,7 +33,7 @@ export default class PaginationContainer {
 
     ReactDOM.render(
       <IntlProvider locale={locale} messages={translations[locale]}>
-        <Pagination data={config} items={100} activePage={1} onSelect={onSelect} />
+        <Pagination {...config} onSelect={onSelect} />
       </IntlProvider>,
       document.getElementById(config.elementId)
     );
