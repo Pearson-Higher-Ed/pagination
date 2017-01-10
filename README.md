@@ -8,7 +8,7 @@ Provides pagination links component. Shows page buttons up to the maxButtons val
 
 Constructor (vanilla JS)
 
-	```javascript
+```javascript
 	// Constructor
 	new Pagination({
 		elementId: 'ID of element to attach to',
@@ -21,7 +21,7 @@ Constructor (vanilla JS)
 
 	// Use this event to manually set activePage
 	document.dispatchEvent(new CustomEvent('o-pagination-setActive', {detail: {activePage: 1}}))
-	```
+```
 React props
 
 	- `items` (number) shows ...
