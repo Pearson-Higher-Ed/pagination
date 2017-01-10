@@ -22,6 +22,7 @@ Constructor (vanilla JS)
 	// Use this event to manually set activePage
 	document.dispatchEvent(new CustomEvent('o-pagination-setActive', {detail: {activePage: 1}}))
 ```
+
 React props
 
 - `items` (number) shows ...
