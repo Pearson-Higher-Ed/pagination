@@ -24,10 +24,10 @@ Constructor (vanilla JS)
 ```
 React props
 
-	- `items` (number) shows ...
-	- `activePage` (number) corresponds to highlighted page button and is centered in component unless it's near the beginning or end of page list
-	- `onSelect` (function) callback fired when a button is clicked
-	- `maxButtons` (number) defaults to 7. Determines the number of page buttons to show
+- `items` (number) shows ...
+- `activePage` (number) corresponds to highlighted page button and is centered in component unless it's near the beginning or end of page list
+- `onSelect` (function) callback fired when a button is clicked
+- `maxButtons` (number) defaults to 7. Determines the number of page buttons to show
 
 ## Next Step
 
