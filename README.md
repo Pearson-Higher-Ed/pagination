@@ -17,7 +17,7 @@ Constructor (vanilla JS)
 	});
 
 	// Fires when user clicks a page button. Provides a corresponding page number. Sets activePage.
-	document.addEventListener('o-pagination-select', (event) => console.log(''))
+	document.addEventListener('o-pagination-setActive', (event) => console.log(event.detail.activePage))
 
 	// Use this event to manually set activePage
 	document.dispatchEvent(new CustomEvent('o-pagination-setActive', {detail: {activePage: 1}}))

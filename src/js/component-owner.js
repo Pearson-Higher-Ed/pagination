@@ -7,20 +7,47 @@ import { messages } from './defaultMessages';
 class ComponentOwner extends React.Component {
   static propTypes = {
     items: PropTypes.number.isRequired,
-    activePage: PropTypes.number.isRequired,
+    activePage: PropTypes.number,
     onSelect: PropTypes.func.isRequired,
     maxButtons: PropTypes.number
   };
 
   static defaultProps = {
-    maxButtons: 5
+    maxButtons: 5,
+    activePage: 1
   };
+
+  constructor(props) {
+    super(props);
+    this.state = this.calculateState(props);
+    this.setActive = this.setActive.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('o-pagination-setActive', this.setActive);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState(this.calculateState(nextProps));
+  }
+
+  setActive(event) {
+    this.setState({
+      activePage: event.detail.activePage
+    });
+  }
+
+  calculateState(props) {
+    return {
+      activePage: props.activePage
+    }
+  }
 
   createFirstLast() {
     return [(
       <PaginationButton
         key="firstItem"
-        active={this.props.activePage === 1}
+        active={this.state.activePage === 1}
         onSelect={this.props.onSelect}
         eventKey={1}
       >
@@ -34,7 +61,7 @@ class ComponentOwner extends React.Component {
     ), (
       <PaginationButton
         key="maxItems"
-        active={this.props.activePage === this.props.items}
+        active={this.state.activePage === this.props.items}
         onSelect={this.props.onSelect}
         eventKey={this.props.items}
       >
@@ -61,11 +88,11 @@ class ComponentOwner extends React.Component {
       displayButtons = this.props.items - 2;
     }
 
-    let startPage = (this.props.activePage - 1) - parseInt(displayButtons / 2, 10);
-    if (this.props.activePage <= parseInt(displayButtons / 2, 10) + 1) {
+    let startPage = (this.state.activePage - 1) - parseInt(displayButtons / 2, 10);
+    if (this.state.activePage <= parseInt(displayButtons / 2, 10) + 1) {
       startPage = 1;
     }
-    if (this.props.activePage >= this.props.items - parseInt(displayButtons / 2, 10)) {
+    if (this.state.activePage >= this.props.items - parseInt(displayButtons / 2, 10)) {
       startPage = this.props.items - displayButtons - 1;
     }
 
@@ -74,7 +101,7 @@ class ComponentOwner extends React.Component {
     const pageButtons = totalItems.slice(startPage, endPage).map((item) => {
       return (
         <PaginationButton
-          active={this.props.activePage === (item + 1)}
+          active={this.state.activePage === (item + 1)}
           key={item}
           eventKey={item + 1}
           onSelect={this.props.onSelect}
@@ -130,9 +157,9 @@ class ComponentOwner extends React.Component {
       <div className="paginationGroup">
         <PaginationButton
           active={false}
-          disabled={this.props.activePage === 1}
+          disabled={this.state.activePage === 1}
           onSelect={this.props.onSelect}
-          eventKey={this.props.activePage - 1}
+          eventKey={this.state.activePage - 1}
         >
           <span className="pe-sr-only">
             <FormattedMessage {...messages.prevButton} />
@@ -144,9 +171,9 @@ class ComponentOwner extends React.Component {
           {this.renderPageButtons()}
         <PaginationButton
           active={false}
-          disabled={this.props.activePage === this.props.items}
+          disabled={this.state.activePage === this.props.items}
           onSelect={this.props.onSelect}
-          eventKey={this.props.activePage + 1}
+          eventKey={this.state.activePage + 1}
         >
           <span className="pe-sr-only">
             <FormattedMessage {...messages.nextButton} />
