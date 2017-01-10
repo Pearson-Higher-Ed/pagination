@@ -8,7 +8,7 @@ Provides pagination links component. Shows page buttons up to the maxButtons val
 
 Constructor (vanilla JS)
 
-	```JS
+	```javascript
 	// Constructor
 	new Pagination({
 		elementId: 'ID of element to attach to',
