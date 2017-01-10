@@ -95,7 +95,12 @@ class ComponentOwner extends React.Component {
           key="frontEllipses"
           disabled={true}
         >
-          ...
+          <span className="pe-sr-only">
+            <FormattedMessage {...messages.pagination} />
+          </span>
+          <span aria-hidden="true">
+            ...
+          </span>
         </PaginationButton>
       );
     }
@@ -108,7 +113,12 @@ class ComponentOwner extends React.Component {
           key="backEllipses"
           disabled={true}
         >
-          ...
+          <span className="pe-sr-only">
+            <FormattedMessage {...messages.pagination} />
+          </span>
+          <span aria-hidden="true">
+            ...
+          </span>
         </PaginationButton>
       );
     }

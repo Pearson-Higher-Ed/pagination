@@ -53,11 +53,10 @@ describe('Component Owner Suite', () => {
     );
 
     const pagination = renderer.getRenderOutput();
-
     expect(pagination.props.children[1][0].key).toEqual('firstItem');
     expect(pagination.props.children[1][maxButtons].key).toEqual('backEllipses');
     expect(pagination.props.children[1][maxButtons].props.disabled).toEqual(true);
-    expect(pagination.props.children[1][maxButtons].props.children).toEqual('...');
+    expect(pagination.props.children[1][maxButtons].props.children[1].props.children).toEqual('...');
     expect(pagination.props.children[1][maxButtons + 1].props.children.props.children[1]).toEqual(100);
   });
 
@@ -76,7 +75,7 @@ describe('Component Owner Suite', () => {
     expect(pagination.props.children[1][0].key).toEqual('firstItem');
     expect(pagination.props.children[1][1].key).toEqual('frontEllipses');
     expect(pagination.props.children[1][1].props.disabled).toEqual(true);
-    expect(pagination.props.children[1][1].props.children).toEqual('...');
+    expect(pagination.props.children[1][1].props.children[1].props.children).toEqual('...');
   });
 
   it('4. handles large # of buttons (ellipses at both ends)', () => {

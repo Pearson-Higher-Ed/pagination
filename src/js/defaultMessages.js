@@ -12,5 +12,9 @@ export const messages = defineMessages({
   nextButton: {
     id: 'nextButton',
     defaultMessage: 'Next'
+  },
+  pagination: {
+    id: 'pagination',
+    defaultMessage: 'More pages'
   }
 });
