@@ -19,16 +19,16 @@ Constructor (vanilla JS)
 	// Fires when user clicks a page button. Provides a corresponding page number. Sets activePage.
 	document.addEventListener('o-pagination-setActive', (event) => console.log(event.detail.activePage))
 
-	// Use this event to manually set activePage
+	// Use this event to manually set activePage.
 	document.dispatchEvent(new CustomEvent('o-pagination-setActive', {detail: {activePage: 1}}))
 ```
 
 React props
 
-- `items` (number) is the total number of pages
-- `activePage` (number) corresponds to highlighted page button and is centered in component unless it's near the beginning or end of page list
-- `onSelect` (function) callback fired when a button is clicked
-- `maxButtons` (number) defaults to 7. Determines the number of page buttons to show
+- `items` (number) is the total number of pages.
+- `activePage` (number) corresponds to highlighted page button and is centered in component unless it's near the beginning or end of page list.
+- `onSelect` (function) callback fired when a button is clicked.
+- `maxButtons` (number) defaults to 5. Determines the number of page buttons to show. Prev and Next buttons are always shown. First and Last page buttons are always shown. The number of buttons in between will not exceed maxButtons.
 
 ## Next Step
 
