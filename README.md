@@ -25,7 +25,7 @@ Constructor (vanilla JS)
 
 React props
 
-- `items` (number) shows ...
+- `items` (number) is the total number of pages
 - `activePage` (number) corresponds to highlighted page button and is centered in component unless it's near the beginning or end of page list
 - `onSelect` (function) callback fired when a button is clicked
 - `maxButtons` (number) defaults to 7. Determines the number of page buttons to show

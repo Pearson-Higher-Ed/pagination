@@ -8,14 +8,14 @@ Install and save in your package.json:
 
 ## External Dependencies
 
-React and ReactDOM (v0.14 or v15) are external dependencies required to use this component. They are npm-installable or 
+React and ReactDOM (v0.14 or v15) are external dependencies required to use this component. They are npm-installable or
 available from a third-party [CDN](https://cdnjs.com/libraries/react/).
 
 This component targets the styling in the [Pearson Elements SDK](https://www.npmjs.com/package/pearson-elements).
 
 ## Cross-browser Compatibility
 
-The following [Polyfill.io](https://cdn.polyfill.io/v2/docs/examples) service is recommended for consuming this 
+The following [Polyfill.io](https://cdn.polyfill.io/v2/docs/examples) service is recommended for consuming this
 component cross-browser:
 
 ```html
@@ -31,24 +31,44 @@ If your browser already supports a feature, this service automatically optimizes
 
 See the /demo directory for example usage.
 
-The transpiled, minified bundle will be available in /node_modules/@pearson-components in the component 
+The transpiled, minified bundle will be available in /node_modules/@pearson-components in the component
 /build directory after you have npm installed this component in your project.
 
 Eventing example:
 
 ```js
-[EVENTING EXAMPLE GOES HERE]
+	// Fires when user clicks a page button. Provides a corresponding page number. Sets activePage.
+	document.addEventListener('o-pagination-setActive', (event) => console.log(event.detail.activePage))
+
+	// Use this event to manually set activePage
+	document.dispatchEvent(new CustomEvent('o-pagination-setActive', {detail: {activePage: 1}}))
 ```
 
 Direct API example:
 
 ```js
-[DIRECT API EXAMPLE GOES HERE]
+	// Constructor
+	new Pagination({
+		elementId: 'ID of element to attach to',
+		items: 'number of pages total',
+		activePage: '(optional) defaults to 1'
+	});
 ```
-    
+
 ### Component Configuration
 
-    [CONFIG INFO GOES HERE]
+```js
+	// Default export is vanilla JS class. Destructure to use React component directly.
+	import {PaginationIntl} from 'Pagination';
+
+    <PaginationIntl
+    	locale="en"
+    	items={100}
+    	activePage={1}
+    	maxButtons={7}
+    	onSelect={(eventKey, event) => {console.log(eventKey)}}
+    />
+```
 
 ### Eventing
 
@@ -57,6 +77,6 @@ Direct API example:
         <th>Event</th><th>detail</th>
     </tr
     <tr>
-        <td></td><td></td>
+        <td>o-pagination-setActive</td><td>Fires on every page button click. Alternatively, can be dispatched with `{detail: {activePage: 1}}` to set activePage.</td>
     </tr>
 </table>

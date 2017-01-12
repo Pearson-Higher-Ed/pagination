@@ -4,12 +4,6 @@ import Pagination from './src/js/component-owner';
 import PaginationButton from './src/js/PaginationButton';
 import PaginationIntl from './src/js/PaginationIntl';
 
-// i18n, set up for French out-of-the-box
-import frJson from './translations/fr.json';
-const translations = {
-  'fr' : frJson
-};
-
 const onSelect = (eventKey) => {
   document.dispatchEvent(new CustomEvent('o-pagination-setActive', {
     detail: {
@@ -29,7 +23,7 @@ export default class PaginationContainer {
     const locale = config.locale ? config.locale : 'en';
 
     ReactDOM.render(
-      <PaginationIntl {...config} locale={locale} messages={translations[locale]} onSelect={onSelect} />,
+      <PaginationIntl {...config} locale={locale} onSelect={onSelect} />,
       document.getElementById(config.elementId)
     );
   }
