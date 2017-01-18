@@ -1,7 +1,7 @@
 {
   "buttonText": "dis bonjour",
   "placeholder": "espace réservé",
-  "activePage": "Active page french",
-  "prevButton": "Previous french",
-  "nextButton": "Next french"
+  "activePage": "page active",
+  "prevButton": "précédent",
+  "nextButton": "prochain"
 }
