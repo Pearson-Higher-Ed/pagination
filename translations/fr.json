@@ -2,6 +2,9 @@
   "buttonText": "dis bonjour",
   "placeholder": "espace réservé",
   "activePage": "page active",
-  "prevButton": "précédent",
-  "nextButton": "prochain"
+  "previousButton": "Précédent",
+  "previousAbbrButton": "Précédent",
+  "nextButton": "Prochain",
+  "nextAbbrButton": "Prochain",
+  "pagination": "Plus de pages"
 }

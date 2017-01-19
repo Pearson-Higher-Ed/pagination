@@ -51,12 +51,12 @@ class ComponentOwner extends React.Component {
         onSelect={this.props.onSelect}
         eventKey={1}
       >
-        <div>
+        {this.state.activePage === 1 &&
           <span className="pe-sr-only">
             <FormattedMessage {...messages.activePage} />
           </span>
-          1
-        </div>
+        }
+        1
       </PaginationButton>
     ), (
       <PaginationButton
@@ -65,12 +65,12 @@ class ComponentOwner extends React.Component {
         onSelect={this.props.onSelect}
         eventKey={this.props.items}
       >
-        <div>
-        <span className="pe-sr-only">
-          <FormattedMessage {...messages.activePage} />
-        </span>
+        {this.state.activePage === this.props.items &&
+          <span className="pe-sr-only">
+            <FormattedMessage {...messages.activePage} />
+          </span>
+        }
         {this.props.items}
-        </div>
       </PaginationButton>
     )];
   }
@@ -106,12 +106,12 @@ class ComponentOwner extends React.Component {
           eventKey={item + 1}
           onSelect={this.props.onSelect}
         >
-          <div>
+          {this.state.activePage === (item + 1) &&
             <span className="pe-sr-only">
               <FormattedMessage {...messages.activePage} />
             </span>
-            {item + 1}
-          </div>
+          }
+          {item + 1}
         </PaginationButton>
       );
     });
@@ -154,7 +154,7 @@ class ComponentOwner extends React.Component {
 
   render() {
     return (
-      <div className="paginationGroup">
+      <nav aria-label="pagination" data-reactroot="" className="paginationGroup">
         <PaginationButton
           active={false}
           disabled={this.state.activePage === 1}
@@ -162,10 +162,10 @@ class ComponentOwner extends React.Component {
           eventKey={this.state.activePage - 1}
         >
           <span className="pe-sr-only">
-            <FormattedMessage {...messages.prevButton} />
+            <FormattedMessage {...messages.previousButton} />
           </span>
           <span aria-hidden="true">
-            Prev
+            <FormattedMessage {...messages.previousAbbrButton} />
           </span>
         </PaginationButton>
           {this.renderPageButtons()}
@@ -179,10 +179,10 @@ class ComponentOwner extends React.Component {
             <FormattedMessage {...messages.nextButton} />
           </span>
           <span aria-hidden="true">
-            Next
+            <FormattedMessage {...messages.nextAbbrButton} />
           </span>
         </PaginationButton>
-      </div>
+      </nav>
     );
   }
 }

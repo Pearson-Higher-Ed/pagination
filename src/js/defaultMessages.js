@@ -5,12 +5,20 @@ export const messages = defineMessages({
     id: 'activePage',
     defaultMessage: 'Active page'
   },
-  prevButton: {
-    id: 'prevButton',
+  previousButton: {
+    id: 'previousButton',
     defaultMessage: 'Previous'
+  },
+  previousAbbrButton: {
+    id: 'previousAbbrButton',
+    defaultMessage: 'Prev'
   },
   nextButton: {
     id: 'nextButton',
+    defaultMessage: 'Next'
+  },
+  nextAbbrButton: {
+    id: 'nextAbbrButton',
     defaultMessage: 'Next'
   },
   pagination: {
