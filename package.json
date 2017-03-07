@@ -8,6 +8,7 @@
     "dev": "node ./npm_scripts/dev.js",
     "start": "npm run dev",
     "pretest": "node ./npm_scripts/pretest.js",
+    "postpublish": "npm access public && echo 'Package scope set to public!'",
     "test": "node ./npm_scripts/test.js",
     "build": "node ./npm_scripts/build.js",
     "lint": "node ./npm_scripts/lint.js",
