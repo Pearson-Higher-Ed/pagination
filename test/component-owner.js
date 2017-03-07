@@ -38,8 +38,8 @@ describe('Component Owner Suite', () => {
 
     expect(pagination.props.children.length).toEqual(3);
     expect(pagination.props.children[1].length).toEqual(maxButtons);
-    expect(pagination.props.children[0].props.children[1].props.children).toEqual('Prev');
-    expect(pagination.props.children[2].props.children[1].props.children).toEqual('Next');
+    expect(pagination.props.children[0].props.children[1].props.children.props.defaultMessage).toEqual('Prev');
+    expect(pagination.props.children[2].props.children[1].props.children.props.defaultMessage).toEqual('Next');
   });
 
   it('2. handles large # of buttons (ellipses at end)', () => {
@@ -57,8 +57,8 @@ describe('Component Owner Suite', () => {
     expect(pagination.props.children[1][0].key).toEqual('firstItem');
     expect(pagination.props.children[1][maxButtons].key).toEqual('backEllipses');
     expect(pagination.props.children[1][maxButtons].props.disabled).toEqual(true);
-    expect(pagination.props.children[1][maxButtons].props.children).toEqual('...');
-    expect(pagination.props.children[1][maxButtons + 1].props.children.props.children[1]).toEqual(100);
+    expect(pagination.props.children[1][maxButtons].props.children[1].props.children).toEqual('...');
+    expect(pagination.props.children[1][maxButtons + 1].props.children[1]).toEqual(100);
   });
 
   it('3. handles large # of buttons (ellipses at beginning)', () => {
@@ -76,7 +76,7 @@ describe('Component Owner Suite', () => {
     expect(pagination.props.children[1][0].key).toEqual('firstItem');
     expect(pagination.props.children[1][1].key).toEqual('frontEllipses');
     expect(pagination.props.children[1][1].props.disabled).toEqual(true);
-    expect(pagination.props.children[1][1].props.children).toEqual('...');
+    expect(pagination.props.children[1][1].props.children[1].props.children).toEqual('...');
   });
 
   it('4. handles large # of buttons (ellipses at both ends)', () => {
@@ -94,7 +94,7 @@ describe('Component Owner Suite', () => {
     expect(pagination.props.children[1][0].key).toEqual('firstItem');
     expect(pagination.props.children[1][1].key).toEqual('frontEllipses');
     expect(pagination.props.children[1][maxButtons].key).toEqual('backEllipses');
-    expect(pagination.props.children[1][maxButtons + 1].props.children.props.children[1]).toEqual(100);
+    expect(pagination.props.children[1][maxButtons + 1].props.children[1]).toEqual(100);
   })
 
   it('5. handles fewer pages than maxButtons', () => {
@@ -127,6 +127,7 @@ describe('Component Owner Suite', () => {
 
     const paginationButton = TestUtils.scryRenderedDOMComponentsWithTag(container, 'button')[4];
     TestUtils.Simulate.click(paginationButton);
+
     expect(called).toEqual(true);
   });
 
@@ -140,6 +141,7 @@ describe('Component Owner Suite', () => {
     );
 
     const pagination = renderer.getRenderOutput();
+
     expect(pagination.props.children.length).toEqual(3);
     expect(pagination.props.children[1].length).toEqual(5);
   });

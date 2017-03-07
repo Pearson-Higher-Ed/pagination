@@ -7,43 +7,70 @@ import { messages } from './defaultMessages';
 class ComponentOwner extends React.Component {
   static propTypes = {
     items: PropTypes.number.isRequired,
-    activePage: PropTypes.number.isRequired,
+    activePage: PropTypes.number,
     onSelect: PropTypes.func.isRequired,
     maxButtons: PropTypes.number
   };
 
   static defaultProps = {
-    maxButtons: 5
+    maxButtons: 5,
+    activePage: 1
   };
+
+  constructor(props) {
+    super(props);
+    this.state = this.calculateState(props);
+    this.setActive = this.setActive.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('o-pagination-setActive', this.setActive);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState(this.calculateState(nextProps));
+  }
+
+  setActive(event) {
+    this.setState({
+      activePage: event.detail.activePage
+    });
+  }
+
+  calculateState(props) {
+    return {
+      activePage: props.activePage
+    }
+  }
 
   createFirstLast() {
     return [(
       <PaginationButton
         key="firstItem"
-        active={this.props.activePage === 1}
+        active={this.state.activePage === 1}
         onSelect={this.props.onSelect}
         eventKey={1}
       >
-        <div>
+        {this.state.activePage === 1 &&
           <span className="pe-sr-only">
             <FormattedMessage {...messages.activePage} />
           </span>
-          1
-        </div>
+        }
+        1
       </PaginationButton>
     ), (
       <PaginationButton
         key="maxItems"
-        active={this.props.activePage === this.props.items}
+        active={this.state.activePage === this.props.items}
         onSelect={this.props.onSelect}
         eventKey={this.props.items}
       >
-        <div>
-        <span className="pe-sr-only">
-          <FormattedMessage {...messages.activePage} />
-        </span>
+        {this.state.activePage === this.props.items &&
+          <span className="pe-sr-only">
+            <FormattedMessage {...messages.activePage} />
+          </span>
+        }
         {this.props.items}
-        </div>
       </PaginationButton>
     )];
   }
@@ -61,11 +88,11 @@ class ComponentOwner extends React.Component {
       displayButtons = this.props.items - 2;
     }
 
-    let startPage = (this.props.activePage - 1) - parseInt(displayButtons / 2, 10);
-    if (this.props.activePage <= parseInt(displayButtons / 2, 10) + 1) {
+    let startPage = (this.state.activePage - 1) - parseInt(displayButtons / 2, 10);
+    if (this.state.activePage <= parseInt(displayButtons / 2, 10) + 1) {
       startPage = 1;
     }
-    if (this.props.activePage >= this.props.items - parseInt(displayButtons / 2, 10)) {
+    if (this.state.activePage >= this.props.items - parseInt(displayButtons / 2, 10)) {
       startPage = this.props.items - displayButtons - 1;
     }
 
@@ -74,17 +101,17 @@ class ComponentOwner extends React.Component {
     const pageButtons = totalItems.slice(startPage, endPage).map((item) => {
       return (
         <PaginationButton
-          active={this.props.activePage === (item + 1)}
+          active={this.state.activePage === (item + 1)}
           key={item}
           eventKey={item + 1}
           onSelect={this.props.onSelect}
         >
-          <div>
+          {this.state.activePage === (item + 1) &&
             <span className="pe-sr-only">
               <FormattedMessage {...messages.activePage} />
             </span>
-            {item + 1}
-          </div>
+          }
+          {item + 1}
         </PaginationButton>
       );
     });
@@ -95,7 +122,12 @@ class ComponentOwner extends React.Component {
           key="frontEllipses"
           disabled={true}
         >
-          ...
+          <span className="pe-sr-only">
+            <FormattedMessage {...messages.pagination} />
+          </span>
+          <span aria-hidden="true">
+            ...
+          </span>
         </PaginationButton>
       );
     }
@@ -108,7 +140,12 @@ class ComponentOwner extends React.Component {
           key="backEllipses"
           disabled={true}
         >
-          ...
+          <span className="pe-sr-only">
+            <FormattedMessage {...messages.pagination} />
+          </span>
+          <span aria-hidden="true">
+            ...
+          </span>
         </PaginationButton>
       );
     }
@@ -117,35 +154,35 @@ class ComponentOwner extends React.Component {
 
   render() {
     return (
-      <div className="paginationGroup">
+      <nav aria-label="pagination" data-reactroot="" className="paginationGroup">
         <PaginationButton
           active={false}
-          disabled={this.props.activePage === 1}
+          disabled={this.state.activePage === 1}
           onSelect={this.props.onSelect}
-          eventKey={this.props.activePage - 1}
+          eventKey={this.state.activePage - 1}
         >
           <span className="pe-sr-only">
-            <FormattedMessage {...messages.prevButton} />
+            <FormattedMessage {...messages.previousButton} />
           </span>
           <span aria-hidden="true">
-            Prev
+            <FormattedMessage {...messages.previousAbbrButton} />
           </span>
         </PaginationButton>
           {this.renderPageButtons()}
         <PaginationButton
           active={false}
-          disabled={this.props.activePage === this.props.items}
+          disabled={this.state.activePage === this.props.items}
           onSelect={this.props.onSelect}
-          eventKey={this.props.activePage + 1}
+          eventKey={this.state.activePage + 1}
         >
           <span className="pe-sr-only">
             <FormattedMessage {...messages.nextButton} />
           </span>
           <span aria-hidden="true">
-            Next
+            <FormattedMessage {...messages.nextAbbrButton} />
           </span>
         </PaginationButton>
-      </div>
+      </nav>
     );
   }
 }

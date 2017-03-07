@@ -12,8 +12,10 @@ addLocaleData(frLocaleData);
 class PaginationIntl extends React.Component {
   static propTypes = {
     locale: PropTypes.string,
-    config: PropTypes.object,
-    onSelect: PropTypes.func
+    items: PropTypes.number.isRequired,
+    activePage: PropTypes.number.isRequired,
+    onSelect: PropTypes.func.isRequired,
+    maxButtons: PropTypes.number
   };
 
   static defaultProps = {
@@ -22,9 +24,10 @@ class PaginationIntl extends React.Component {
 
 
   render() {
+    const {locale, ...rest} = this.props;
     return (
-      <IntlProvider locale={this.props.locale} messages={translations[this.props.locale]}>
-        <Pagination data={this.props.config} items={100} activePage={1} onSelect={this.props.onSelect} />
+      <IntlProvider locale={locale} messages={translations[locale]}>
+        <Pagination {...rest} />
       </IntlProvider>
     );
   }

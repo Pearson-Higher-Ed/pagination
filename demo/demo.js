@@ -11,8 +11,10 @@ function init() {
   // Demo direct API
   new MyComponent({
     elementId: 'demo-target1',
-    greeting: 'Bonjour le monde!',
-    locale: 'fr'
+    locale: 'fr',
+    activePage: 2,
+    items: 50,
+    maxButtons: 10
   });
 
 
