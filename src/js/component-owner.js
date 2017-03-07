@@ -77,7 +77,6 @@ class ComponentOwner extends React.Component {
 
   renderPageButtons() {
     const [first, last] = this.createFirstLast();
-    const totalItems = Array.from(Array(this.props.items).keys());
 
     // if no buttons to the left when only displaying maxButtons, don't show ellipses on left
     // if no buttons to the right when only displaying maxButtons, don't show ellipses on right
@@ -98,8 +97,9 @@ class ComponentOwner extends React.Component {
 
     const endPage = (startPage + displayButtons);
 
-    const pageButtons = totalItems.slice(startPage, endPage).map((item) => {
-      return (
+    const pageButtons = [];
+    for (let item = startPage; item <= endPage; item++) {
+      pageButtons.push(
         <PaginationButton
           active={this.state.activePage === (item + 1)}
           key={item}
@@ -114,7 +114,7 @@ class ComponentOwner extends React.Component {
           {item + 1}
         </PaginationButton>
       );
-    });
+    }
 
     if (startPage > 1) {
       pageButtons[0] = (
