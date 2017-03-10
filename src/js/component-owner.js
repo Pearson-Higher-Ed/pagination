@@ -77,7 +77,7 @@ class ComponentOwner extends React.Component {
 
   renderPageButtons() {
     const [first, last] = this.createFirstLast();
-    const totalItems = Array.from(Array(this.props.items), (x, i) => i);
+    const totalItems = [...Array(this.props.items)].map((x, i) => i);
 
     // if no buttons to the left when only displaying maxButtons, don't show ellipses on left
     // if no buttons to the right when only displaying maxButtons, don't show ellipses on right
