@@ -1,5 +1,10 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/Pearson-Higher-Ed/pagination/compare/v0.1.0...v0.2.0) (2017-04-07)
+
+
+
 <a name="0.1.0"></a>
-# 0.1.0 (2017-03-31)
+# [0.1.0](https://github.com/Pearson-Higher-Ed/pagination/compare/896ea18...v0.1.0) (2017-03-31)
 
 
 ### Bug Fixes
