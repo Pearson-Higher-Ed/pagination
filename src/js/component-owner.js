@@ -1,5 +1,6 @@
 import '../scss/pagination.scss';
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import PaginationButton from './PaginationButton';
 import { messages } from './defaultMessages';

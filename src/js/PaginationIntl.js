@@ -1,5 +1,6 @@
 import '../scss/pagination.scss';
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import frJson from '../../translations/fr.json';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import frLocaleData from 'react-intl/locale-data/fr';
