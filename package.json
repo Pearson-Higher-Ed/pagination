@@ -57,6 +57,7 @@
     "node-fs-extra": "^0.8.1",
     "node-sass": "~3.7.0",
     "pearson-elements": "^1.7.3",
+    "prop-types": "^15.5.10",
     "react": "^15.0.0",
     "react-addons-test-utils": "^15.0.0",
     "react-dom": "^15.0.0",
