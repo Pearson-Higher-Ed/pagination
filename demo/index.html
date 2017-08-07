@@ -24,6 +24,20 @@
     <h4> Ellipses at both beginning & end </h4>
     <div id="demo-target5"></div>
 
+    <script>
+      if (!document.getElementById('pe-icons-sprite')) {
+        var pe_ajax=new XMLHttpRequest();
+        pe_ajax.open("GET", "./p-icons-sprite-1.1.svg", true);
+        pe_ajax.responseType="document";
+        pe_ajax.onload=function(e) {
+          document.body.insertBefore(
+            pe_ajax.responseXML.documentElement,
+            document.body.childNodes[0]
+          );
+        }
+        pe_ajax.send();
+      }
+    </script>
     <!-- External dependencies for React -->
     <script src="../node_modules/react/dist/react.js"></script>
     <script src="../node_modules/react-dom/dist/react-dom.js"></script>
