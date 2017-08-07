@@ -4,7 +4,7 @@
   "description": "Pagination buttons",
   "main": "./build/dist.pagination.js",
   "scripts": {
-    "dev-setup": "node ./npm_scripts/dev-setup.js",
+    "dev-setup": "mkdir -p icons && cp ./node_modules/pearson-elements/dist/icons/* ./icons && node ./npm_scripts/dev-setup.js",
     "dev": "node ./npm_scripts/dev.js",
     "start": "npm run dev",
     "pretest": "node ./npm_scripts/pretest.js",
@@ -65,6 +65,7 @@
     "semver": "~5.1.0",
     "style-loader": "~0.13.0",
     "url-loader": "~0.5.7",
+    "uuid": "2.0.2",
     "webpack": "~1.12.9",
     "webpack-dev-server": "~1.14.0"
   },

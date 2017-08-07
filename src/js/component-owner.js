@@ -1,16 +1,18 @@
 import '../scss/pagination.scss';
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl, intlShape } from 'react-intl';
 import PaginationButton from './PaginationButton';
 import { messages } from './defaultMessages';
+import uuid from 'uuid';
 
-class ComponentOwner extends React.Component {
+class Pagination extends Component {
   static propTypes = {
     items: PropTypes.number.isRequired,
     activePage: PropTypes.number,
     onSelect: PropTypes.func.isRequired,
-    maxButtons: PropTypes.number
+    maxButtons: PropTypes.number,
+    intl: intlShape.isRequired
   };
 
   static defaultProps = {
@@ -44,39 +46,72 @@ class ComponentOwner extends React.Component {
     }
   }
 
+  createPrevNext({intl}) {
+    const prevTitle = intl.formatMessage(messages.previousButton);
+    const nextTitle = intl.formatMessage(messages.nextButton);
+    const i_id='_'+uuid.v1();
+
+    return [(
+      <PaginationButton
+        key="prev"
+        active={false}
+        disabled={this.state.activePage === 1}
+        onSelect={this.props.onSelect}
+        eventKey={this.state.activePage - 1}>
+        <span className="pagination-prev">
+          <svg focusable="false"
+               role="img"
+               aria-labelledby = {i_id}
+               className = "pe-icon--chevron-back-sm-18">
+            <title id={i_id}> {prevTitle} </title>
+            <use xlinkHref="#chevron-back-sm-18"></use>
+          </svg>
+        </span>
+      </PaginationButton>
+    ), (
+      <PaginationButton
+        key="next"
+        active={false}
+        disabled={this.state.activePage === this.props.items}
+        onSelect={this.props.onSelect}
+        eventKey={this.state.activePage + 1}>
+        <span className="pagination-next">
+          <svg focusable="false"
+               role="img"
+               aria-labelledby = {'pe'+i_id}
+               className = "pe-icon--chevron-next-sm-18">
+            <title id={'pe'+i_id}> {nextTitle} </title>
+            <use xlinkHref="#chevron-next-sm-18"></use>
+          </svg>
+        </span>
+      </PaginationButton>
+    )];
+  }
+
   createFirstLast() {
+
     return [(
       <PaginationButton
         key="firstItem"
         active={this.state.activePage === 1}
         onSelect={this.props.onSelect}
-        eventKey={1}
-      >
-        {this.state.activePage === 1 &&
-          <span className="pe-sr-only">
-            <FormattedMessage {...messages.activePage} />
-          </span>
-        }
-        1
+        eventKey={1}>
+        <span>1</span>
       </PaginationButton>
     ), (
       <PaginationButton
         key="maxItems"
         active={this.state.activePage === this.props.items}
         onSelect={this.props.onSelect}
-        eventKey={this.props.items}
-      >
-        {this.state.activePage === this.props.items &&
-          <span className="pe-sr-only">
-            <FormattedMessage {...messages.activePage} />
-          </span>
-        }
-        {this.props.items}
+        eventKey={this.props.items}>
+        <span>{this.props.items}</span>
       </PaginationButton>
     )];
   }
 
+
   renderPageButtons() {
+    const [prev, next] = this.createPrevNext();
     const [first, last] = this.createFirstLast();
     const totalItems = [...Array(this.props.items)].map((x, i) => i);
 
@@ -102,17 +137,11 @@ class ComponentOwner extends React.Component {
     const pageButtons = totalItems.slice(startPage, endPage).map((item) => {
       return (
         <PaginationButton
-          active={this.state.activePage === (item + 1)}
+          active={this.state.activePage === (item)}
           key={item}
-          eventKey={item + 1}
-          onSelect={this.props.onSelect}
-        >
-          {this.state.activePage === (item + 1) &&
-            <span className="pe-sr-only">
-              <FormattedMessage {...messages.activePage} />
-            </span>
-          }
-          {item + 1}
+          eventKey={item}
+          onSelect={this.props.onSelect}>
+          <span>{item}</span>
         </PaginationButton>
       );
     });
@@ -122,12 +151,9 @@ class ComponentOwner extends React.Component {
         <PaginationButton
           key="frontEllipses"
           disabled={true}
-        >
-          <span className="pe-sr-only">
-            <FormattedMessage {...messages.pagination} />
-          </span>
-          <span aria-hidden="true">
-            ...
+          className="ellip">
+          <span>
+            {'\u2026'}
           </span>
         </PaginationButton>
       );
@@ -140,52 +166,23 @@ class ComponentOwner extends React.Component {
         <PaginationButton
           key="backEllipses"
           disabled={true}
-        >
-          <span className="pe-sr-only">
-            <FormattedMessage {...messages.pagination} />
-          </span>
-          <span aria-hidden="true">
-            ...
+          className="ellip">
+          <span>
+            {'\u2026'}
           </span>
         </PaginationButton>
       );
     }
-    return [first, ...pageButtons, last];
+    return [prev, first, ...pageButtons, last, next];
   }
 
   render() {
     return (
-      <nav aria-label="pagination" data-reactroot="" className="paginationGroup">
-        <PaginationButton
-          active={false}
-          disabled={this.state.activePage === 1}
-          onSelect={this.props.onSelect}
-          eventKey={this.state.activePage - 1}
-        >
-          <span className="pe-sr-only">
-            <FormattedMessage {...messages.previousButton} />
-          </span>
-          <span aria-hidden="true">
-            <FormattedMessage {...messages.previousAbbrButton} />
-          </span>
-        </PaginationButton>
-          {this.renderPageButtons()}
-        <PaginationButton
-          active={false}
-          disabled={this.state.activePage === this.props.items}
-          onSelect={this.props.onSelect}
-          eventKey={this.state.activePage + 1}
-        >
-          <span className="pe-sr-only">
-            <FormattedMessage {...messages.nextButton} />
-          </span>
-          <span aria-hidden="true">
-            <FormattedMessage {...messages.nextAbbrButton} />
-          </span>
-        </PaginationButton>
+      <nav aria-label="pagination" data-reactroot="" className="pe-pagination">
+        {this.renderPageButtons()}
       </nav>
     );
   }
 }
 
-export default ComponentOwner;
+export default injectIntl(Pagination);
