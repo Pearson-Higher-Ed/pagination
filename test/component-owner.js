@@ -5,7 +5,7 @@ import expectJSX from 'expect-jsx';
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import TestUtils from 'react-addons-test-utils';
-import ComponentOwner from '../src/js/component-owner';
+import Pagination from '../src/js/component-owner';
 
 expect.extend(expectJSX);
 let called = false;
@@ -26,7 +26,7 @@ describe('Component Owner Suite', () => {
 
   it('1. shallowly renders the component owner using React TestUtils', () => {
     renderer.render(
-      <ComponentOwner
+      <Pagination
         activePage={activePage}
         items={items}
         onSelect={onSelect}
@@ -44,7 +44,7 @@ describe('Component Owner Suite', () => {
 
   it('2. handles large # of buttons (ellipses at end)', () => {
     renderer.render(
-      <ComponentOwner
+      <Pagination
         activePage={1}
         items={100}
         onSelect={onSelect}
@@ -63,7 +63,7 @@ describe('Component Owner Suite', () => {
 
   it('3. handles large # of buttons (ellipses at beginning)', () => {
     renderer.render(
-      <ComponentOwner
+      <Pagination
         activePage={99}
         items={100}
         onSelect={onSelect}
@@ -81,7 +81,7 @@ describe('Component Owner Suite', () => {
 
   it('4. handles large # of buttons (ellipses at both ends)', () => {
     renderer.render(
-      <ComponentOwner
+      <Pagination
         activePage={40}
         items={100}
         onSelect={onSelect}
@@ -99,7 +99,7 @@ describe('Component Owner Suite', () => {
 
   it('5. handles fewer pages than maxButtons', () => {
     renderer.render(
-      <ComponentOwner
+      <Pagination
         activePage={1}
         items={3}
         onSelect={onSelect}
@@ -116,7 +116,7 @@ describe('Component Owner Suite', () => {
   it('6. handles onSelect', () => {
     const container = TestUtils.renderIntoDocument(
       <IntlProvider locale="en">
-        <ComponentOwner
+        <Pagination
           activePage={1}
           items={3}
           onSelect={onSelect}
@@ -133,7 +133,7 @@ describe('Component Owner Suite', () => {
 
   it('7. handles defaults (maxButtons not set)', () => {
     renderer.render(
-      <ComponentOwner
+      <Pagination
         activePage={1}
         items={5}
         onSelect={onSelect}

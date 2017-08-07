@@ -7,7 +7,8 @@ const PaginationButton = ({children, active, onSelect, disabled, eventKey}) => {
 
   return (
     <button
-      className={active ? 'active pe-btn pagination': 'pe-btn pagination'}
+      type="button"
+      {...active ? {'aria-current': 'page'} : {}}
       onClick={select}
       disabled={disabled}
     >
