@@ -23,11 +23,15 @@
     <div id="demo-target4"></div>
     <h4> Ellipses at both beginning & end </h4>
     <div id="demo-target5"></div>
+    <h4> Group Pagination</h4>
+    <div id="demo-target6"></div>
+    <h4> Page Pagination </h4>
+    <div id="demo-target7"></div>
 
     <script>
       if (!document.getElementById('pe-icons-sprite')) {
         var pe_ajax=new XMLHttpRequest();
-        pe_ajax.open("GET", "./p-icons-sprite-1.1.svg", true);
+        pe_ajax.open("GET", "../icons/p-icons-sprite-1.1.svg", true);
         pe_ajax.responseType="document";
         pe_ajax.onload=function(e) {
           document.body.insertBefore(

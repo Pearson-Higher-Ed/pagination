@@ -2,7 +2,6 @@ import '../scss/pagination.scss';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import PaginationButton from './PaginationButton';
-/*import { messages } from './defaultMessages';*/
 import uuid from 'uuid';
 
 class Pagination extends Component {
@@ -10,12 +9,18 @@ class Pagination extends Component {
     items: PropTypes.number.isRequired,
     activePage: PropTypes.number,
     onSelect: PropTypes.func.isRequired,
-    maxButtons: PropTypes.number
+    maxButtons: PropTypes.number,
+    prevTitle: PropTypes.string,
+    nextTitle: PropTypes.string,
+    paginationType: PropTypes.oneOf(['standard', 'group', 'page'])
   };
 
   static defaultProps = {
     maxButtons: 5,
-    activePage: 1
+    activePage: 1,
+    prevTitle: 'previous',
+    nextTitle: 'next',
+    paginationType: 'standard'
   };
 
   constructor(props) {
@@ -45,8 +50,6 @@ class Pagination extends Component {
   }
 
   createPrevNext() {
-    /*const prevTitle = intl.formatMessage(messages.previousButton);
-    const nextTitle = intl.formatMessage(messages.nextButton);*/
     const i_id='_'+uuid.v1();
 
     return [(
@@ -61,7 +64,7 @@ class Pagination extends Component {
                role="img"
                aria-labelledby = {i_id}
                className = "pe-icon--chevron-back-sm-18">
-            <title id={i_id}>prevTitle</title>
+            <title id={i_id}>{this.props.prevTitle}</title>
             <use xlinkHref="#chevron-back-sm-18"></use>
           </svg>
         </span>
@@ -78,7 +81,7 @@ class Pagination extends Component {
                role="img"
                aria-labelledby = {'pe'+i_id}
                className = "pe-icon--chevron-next-sm-18">
-            <title id={'pe'+i_id}>nextTitle</title>
+            <title id={'pe'+i_id}>{this.props.nextTitle}</title>
             <use xlinkHref="#chevron-next-sm-18"></use>
           </svg>
         </span>
