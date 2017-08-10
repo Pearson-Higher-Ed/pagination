@@ -1,9 +1,8 @@
 import '../scss/pagination.scss';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl, intlShape } from 'react-intl';
 import PaginationButton from './PaginationButton';
-import { messages } from './defaultMessages';
+/*import { messages } from './defaultMessages';*/
 import uuid from 'uuid';
 
 class Pagination extends Component {
@@ -11,8 +10,7 @@ class Pagination extends Component {
     items: PropTypes.number.isRequired,
     activePage: PropTypes.number,
     onSelect: PropTypes.func.isRequired,
-    maxButtons: PropTypes.number,
-    intl: intlShape.isRequired
+    maxButtons: PropTypes.number
   };
 
   static defaultProps = {
@@ -46,9 +44,9 @@ class Pagination extends Component {
     }
   }
 
-  createPrevNext({intl}) {
-    const prevTitle = intl.formatMessage(messages.previousButton);
-    const nextTitle = intl.formatMessage(messages.nextButton);
+  createPrevNext() {
+    /*const prevTitle = intl.formatMessage(messages.previousButton);
+    const nextTitle = intl.formatMessage(messages.nextButton);*/
     const i_id='_'+uuid.v1();
 
     return [(
@@ -63,7 +61,7 @@ class Pagination extends Component {
                role="img"
                aria-labelledby = {i_id}
                className = "pe-icon--chevron-back-sm-18">
-            <title id={i_id}> {prevTitle} </title>
+            <title id={i_id}>prevTitle</title>
             <use xlinkHref="#chevron-back-sm-18"></use>
           </svg>
         </span>
@@ -80,7 +78,7 @@ class Pagination extends Component {
                role="img"
                aria-labelledby = {'pe'+i_id}
                className = "pe-icon--chevron-next-sm-18">
-            <title id={'pe'+i_id}> {nextTitle} </title>
+            <title id={'pe'+i_id}>nextTitle</title>
             <use xlinkHref="#chevron-next-sm-18"></use>
           </svg>
         </span>
@@ -137,11 +135,11 @@ class Pagination extends Component {
     const pageButtons = totalItems.slice(startPage, endPage).map((item) => {
       return (
         <PaginationButton
-          active={this.state.activePage === (item)}
-          key={item}
-          eventKey={item}
+          active={this.state.activePage === (item +1)}
+          key={item+1}
+          eventKey={item+1}
           onSelect={this.props.onSelect}>
-          <span>{item}</span>
+          <span>{item +1}</span>
         </PaginationButton>
       );
     });
@@ -185,4 +183,4 @@ class Pagination extends Component {
   }
 }
 
-export default injectIntl(Pagination);
+export default Pagination;

@@ -8,17 +8,32 @@
     background-color: transparent;
     border: 0;
 
-    &:hover, &:focus {
+    &:hover span, &:focus span {
       border-bottom: 1px solid #6a7070;
     }
-    &[aria-current] {
+    &[aria-current] span {
       color: #252525;
       border-bottom: 2px solid #252525;
     }
   }
+  button:first-child,
+  button:last-child {
+    min-width: 28px;
+    min-height: 28px;
+    border: 1px solid #c7c7c7;
+    border-radius: 50%;
+
+    &:hover span,
+    &:focus span {
+      border-bottom: 0;
+    }
+    &:disabled {
+      color: #c7c7c7;
+    }
+  }
+}
 /* concrete  #c7c7c7 */
 
-}
 /*
   .active {
     color: #252525;
