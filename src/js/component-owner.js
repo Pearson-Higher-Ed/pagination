@@ -6,13 +6,14 @@ import uuid from 'uuid';
 
 class Pagination extends Component {
   static propTypes = {
-    items: PropTypes.number.isRequired,
+    pages: PropTypes.number.isRequired,
     activePage: PropTypes.number,
     onSelect: PropTypes.func.isRequired,
     maxButtons: PropTypes.number,
     prevTitle: PropTypes.string,
     nextTitle: PropTypes.string,
-    paginationType: PropTypes.oneOf(['standard', 'group', 'page'])
+    compactText: PropTypes.string,
+    paginationType: PropTypes.oneOf(['standard', 'compact'])
   };
 
   static defaultProps = {
@@ -73,7 +74,7 @@ class Pagination extends Component {
       <PaginationButton
         key="next"
         active={false}
-        disabled={this.state.activePage === this.props.items}
+        disabled={this.state.activePage === this.props.pages}
         onSelect={this.props.onSelect}
         eventKey={this.state.activePage + 1}>
         <span className="pagination-next">
@@ -101,11 +102,11 @@ class Pagination extends Component {
       </PaginationButton>
     ), (
       <PaginationButton
-        key="maxItems"
-        active={this.state.activePage === this.props.items}
+        key="maxpages"
+        active={this.state.activePage === this.props.pages}
         onSelect={this.props.onSelect}
-        eventKey={this.props.items}>
-        <span>{this.props.items}</span>
+        eventKey={this.props.pages}>
+        <span>{this.props.pages}</span>
       </PaginationButton>
     )];
   }
@@ -113,29 +114,39 @@ class Pagination extends Component {
 
   renderPageButtons() {
     const [prev, next] = this.createPrevNext();
-    const [first, last] = this.createFirstLast();
-    const totalItems = [...Array(this.props.items)].map((x, i) => i);
 
+    if (this.props.paginationType === 'compact') {
+      const compactText = (
+        <span className="compact-text">
+          {this.props.compactText}
+        </span>
+      );
+      return [prev, compactText, next];
+    }
+  
+    const [first, last] = this.createFirstLast();
+    const totalPages = [...Array(this.props.pages)].map((x, i) => i);
+  
     // if no buttons to the left when only displaying maxButtons, don't show ellipses on left
     // if no buttons to the right when only displaying maxButtons, don't show ellipses on right
     // otherwise show ellipses on left and/or right
 
     let displayButtons = this.props.maxButtons;
-    if (this.props.items < this.props.maxButtons + 2) {
-      displayButtons = this.props.items - 2;
+    if (this.props.pages < this.props.maxButtons + 2) {
+      displayButtons = this.props.pages - 2;
     }
 
     let startPage = (this.state.activePage - 1) - parseInt(displayButtons / 2, 10);
     if (this.state.activePage <= parseInt(displayButtons / 2, 10) + 1) {
       startPage = 1;
     }
-    if (this.state.activePage >= this.props.items - parseInt(displayButtons / 2, 10)) {
-      startPage = this.props.items - displayButtons - 1;
+    if (this.state.activePage >= this.props.pages - parseInt(displayButtons / 2, 10)) {
+      startPage = this.props.pages - displayButtons - 1;
     }
 
     const endPage = (startPage + displayButtons);
 
-    const pageButtons = totalItems.slice(startPage, endPage).map((item) => {
+    const pageButtons = totalPages.slice(startPage, endPage).map((item) => {
       return (
         <PaginationButton
           active={this.state.activePage === (item +1)}

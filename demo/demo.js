@@ -13,7 +13,7 @@ function init() {
     elementId: 'demo-target1',
     locale: 'fr',
     activePage: 2,
-    items: 50,
+    pages: 50,
     maxButtons: 10
   });
 
@@ -21,44 +21,54 @@ function init() {
   const onSelect = () => console.log('selected');
   ReactDOM.render(
     <IntlProvider locale="en">
-      <Pagination items={100} activePage={1} onSelect={onSelect} />
+      <Pagination pages={100} activePage={1} onSelect={onSelect} />
     </IntlProvider>,
     document.getElementById('demo-target2')
   );
 
   ReactDOM.render(
     <IntlProvider locale="en">
-      <Pagination items={5} activePage={1} onSelect={onSelect} />
+      <Pagination pages={5} activePage={1} onSelect={onSelect} />
     </IntlProvider>,
     document.getElementById('demo-target3')
   );
 
   ReactDOM.render(
     <IntlProvider locale="en">
-      <Pagination items={100} activePage={99} onSelect={onSelect} />
+      <Pagination pages={100} activePage={99} onSelect={onSelect} />
     </IntlProvider>,
     document.getElementById('demo-target4')
   );
 
   ReactDOM.render(
     <IntlProvider locale="en">
-      <Pagination items={100} activePage={40} onSelect={onSelect} />
+      <Pagination pages={100} activePage={40} onSelect={onSelect} />
     </IntlProvider>,
     document.getElementById('demo-target5')
   );
 
   ReactDOM.render(
     <IntlProvider locale="en">
-      <Pagination items={20} activePage={1} maxButtons={3} onSelect={onSelect} />
+      <Pagination pages={20} activePage={1} maxButtons={3} onSelect={onSelect} />
     </IntlProvider>,
     document.getElementById('demo-target6')
   );
 
   ReactDOM.render(
     <IntlProvider locale="en">
-      <Pagination items={20} activePage={1} maxButtons={3} onSelect={onSelect} />
+      <Pagination pages={20} activePage={1} paginationType="compact"
+                  onSelect={onSelect} compactText="1-10 of 200"/>
     </IntlProvider>,
     document.getElementById('demo-target7')
+  );
+
+  ReactDOM.render(
+    <IntlProvider locale="fr">
+      <Pagination pages={20} activePage={20} paginationType="compact"
+                  nextTitle="next" prevTitle="précédent"
+                  onSelect={onSelect} compactText="Page 20 of 20"/>
+    </IntlProvider>,
+    document.getElementById('demo-target8')
   );
 }
 
