@@ -11,7 +11,7 @@ function init() {
   new MyPagination({
     elementId: 'demo-target1',
     activePage: 2,
-    pages: 50,
+    pages: 100,
     maxButtons: 10
   });
 

@@ -4,7 +4,6 @@
   "description": "Pagination buttons",
   "main": "./build/dist.pagination.js",
   "scripts": {
-    "dev-setup": "mkdir -p icons && cp ./node_modules/pearson-elements/dist/icons/* ./icons && node ./npm_scripts/dev-setup.js",
     "start": "npm run serve",
     "serve": "NODE_ENV=development webpack-dev-server --hot",
     "gh-pages": "node ./node_modules/@pearson-components/npm-scripts/npm_scripts/gh-pages.js",
