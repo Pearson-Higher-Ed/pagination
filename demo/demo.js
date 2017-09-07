@@ -1,4 +1,4 @@
-import MyPagination, { Pagination } from '../main'; // to demo direct API usage
+import MyPagination, { Pagination } from '../index'; // to demo direct API usage
 import React from 'react';
 import ReactDOM from 'react-dom';
 

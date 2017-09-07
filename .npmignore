@@ -7,7 +7,7 @@ build/.gitkeep
 build/dev*
 npm_scripts
 webpack.config.js
-main.js
+index.js
 
 /test
 /demo

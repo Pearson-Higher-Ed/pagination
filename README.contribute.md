@@ -56,10 +56,9 @@ See the project working before changing anything!
 In your local repo:
 
     npm install
-    npm run copy-utils
-    npm run dev
+    npm start
 
-Navigate to: **localhost:8081/demo** 
+Navigate to: **localhost:8081/pagination**
 
 #### Where are the files being served from?
 
