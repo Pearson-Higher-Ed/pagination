@@ -23,32 +23,6 @@ class Pagination extends Component {
     paginationType: 'standard'
   };
 
-  constructor(props) {
-    super(props);
-    this.state = this.calculateState(props);
-    this.setActive = this.setActive.bind(this);
-  }
-
-  componentDidMount() {
-    document.addEventListener('o-pagination-setActive', this.setActive);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState(this.calculateState(nextProps));
-  }
-
-  setActive(event) {
-    this.setState({
-      activePage: event.detail.activePage
-    });
-  }
-
-  calculateState(props) {
-    return {
-      activePage: props.activePage
-    }
-  }
-
   createPrevNext() {
     const i_id='_'+uuid.v1();
 
@@ -56,9 +30,9 @@ class Pagination extends Component {
       <PaginationButton
         key="prev"
         active={false}
-        disabled={this.state.activePage === 1}
+        disabled={this.props.activePage === 1}
         onSelect={this.props.onSelect}
-        eventKey={this.state.activePage - 1}>
+        eventKey={this.props.activePage - 1}>
         <span className="pagination-prev">
           <svg focusable="false"
                role="img"
@@ -73,9 +47,9 @@ class Pagination extends Component {
       <PaginationButton
         key="next"
         active={false}
-        disabled={this.state.activePage === this.props.pages}
+        disabled={this.props.activePage === this.props.pages}
         onSelect={this.props.onSelect}
-        eventKey={this.state.activePage + 1}>
+        eventKey={this.props.activePage + 1}>
         <span className="pagination-next">
           <svg focusable="false"
                role="img"
@@ -94,7 +68,7 @@ class Pagination extends Component {
     return [(
       <PaginationButton
         key="firstItem"
-        active={this.state.activePage === 1}
+        active={this.props.activePage === 1}
         onSelect={this.props.onSelect}
         eventKey={1}>
         <span>1</span>
@@ -102,7 +76,7 @@ class Pagination extends Component {
     ), (
       <PaginationButton
         key="maxpages"
-        active={this.state.activePage === this.props.pages}
+        active={this.props.activePage === this.props.pages}
         onSelect={this.props.onSelect}
         eventKey={this.props.pages}>
         <span>{this.props.pages}</span>
@@ -122,10 +96,10 @@ class Pagination extends Component {
       );
       return [prev, compactText, next];
     }
-  
+
     const [first, last] = this.createFirstLast();
     const totalPages = [...Array(this.props.pages)].map((x, i) => i);
-  
+
     // if no buttons to the left when only displaying maxButtons, don't show ellipses on left
     // if no buttons to the right when only displaying maxButtons, don't show ellipses on right
     // otherwise show ellipses on left and/or right
@@ -135,11 +109,11 @@ class Pagination extends Component {
       displayButtons = this.props.pages - 2;
     }
 
-    let startPage = (this.state.activePage - 1) - parseInt(displayButtons / 2, 10);
-    if (this.state.activePage <= parseInt(displayButtons / 2, 10) + 1) {
+    let startPage = (this.props.activePage - 1) - parseInt(displayButtons / 2, 10);
+    if (this.props.activePage <= parseInt(displayButtons / 2, 10) + 1) {
       startPage = 1;
     }
-    if (this.state.activePage >= this.props.pages - parseInt(displayButtons / 2, 10)) {
+    if (this.props.activePage >= this.props.pages - parseInt(displayButtons / 2, 10)) {
       startPage = this.props.pages - displayButtons - 1;
     }
 
@@ -148,7 +122,7 @@ class Pagination extends Component {
     const pageButtons = totalPages.slice(startPage, endPage).map((item) => {
       return (
         <PaginationButton
-          active={this.state.activePage === (item +1)}
+          active={this.props.activePage === (item +1)}
           key={item+1}
           eventKey={item+1}
           onSelect={this.props.onSelect}>

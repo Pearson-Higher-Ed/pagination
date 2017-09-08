@@ -1,4 +1,4 @@
-import MyPagination, { Pagination } from '../index'; // to demo direct API usage
+import { Pagination } from '../index';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -7,16 +7,32 @@ import ReactDOM from 'react-dom';
 
 function init() {
 
-  // Demo direct API
-  new MyPagination({
-    elementId: 'demo-target1',
-    activePage: 2,
-    pages: 100,
-    maxButtons: 10
-  });
+  class PaginationContainer extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = { activePage: props.activePage };
+    }
 
-  // Demo as React component
-  const onSelect = () => console.log('selected');
+    setActive = (eventKey) => {
+      this.setState({ activePage: eventKey  });
+    };
+
+    render() {
+      return (
+        <Pagination pages={this.props.pages} activePage={this.state.activePage} onSelect={this.setActive} />
+      );
+    }
+  }
+
+  // Demo inside a React Container
+  ReactDOM.render(
+    <PaginationContainer pages={100} activePage={1} />,
+    document.getElementById('demo-target1')
+  );
+
+  const onSelect = () => {};
+
+  // Demo as stateless React component
   ReactDOM.render(
     <Pagination pages={100} activePage={1} onSelect={onSelect} />,
     document.getElementById('demo-target2')
