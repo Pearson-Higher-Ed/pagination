@@ -1,6 +1,6 @@
 {
   "name": "@pearson-components/pagination",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Pagination buttons",
   "main": "./build/dist.pagination.js",
   "scripts": {
