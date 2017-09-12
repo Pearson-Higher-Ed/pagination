@@ -12,6 +12,7 @@ class Pagination extends Component {
     maxButtons: PropTypes.number,
     prevTitle: PropTypes.string,
     nextTitle: PropTypes.string,
+    compactText: PropTypes.string,
     paginationType: PropTypes.oneOf(['standard', 'compact'])
   };
 
@@ -91,7 +92,7 @@ class Pagination extends Component {
     if (this.props.paginationType === 'compact') {
       const compactText = (
         <span key="compact" className="compact-text">
-          {this.props.children}
+          {this.props.compactText}
         </span>
       );
       return [prev, compactText, next];

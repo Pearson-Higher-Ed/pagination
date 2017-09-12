@@ -59,19 +59,9 @@ function init() {
   );
 
   ReactDOM.render(
-    <Pagination pages={20} activePage={1} paginationType="compact" onSelect={onSelect} >
-      1-10 of 200
-    </Pagination>,
+    <Pagination pages={20} activePage={1} paginationType="compact"
+                compactText="Page 1 or 20 (or put whatever you want in here)" onSelect={onSelect} />,
     document.getElementById('demo-target7')
-  );
-
-  ReactDOM.render(
-    <Pagination pages={20} activePage={20} paginationType="compact"
-                nextTitle="next" prevTitle="précédent"
-                onSelect={onSelect}>
-      Page 20 of 20
-    </Pagination>,
-    document.getElementById('demo-target8')
   );
 }
 

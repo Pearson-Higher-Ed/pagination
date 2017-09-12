@@ -134,4 +134,22 @@ describe('Pagination Owner Suite', () => {
     expect(buttons.length).toEqual(12);
     expect(buttons.at(10).dive().text()).toEqual('10');
   });
+
+  it('shows compact style)', () => {
+    const wrapper = shallow(
+      <Pagination
+        pages={20}
+        onSelect={() => (1)}
+        paginationType="compact"
+        compactText="Page 1 of 20"
+      />
+    );
+
+    // should look like this: (<) Page 1 of 20 (>)
+    const buttons = wrapper.find(PaginationButton);
+    expect(buttons.length).toEqual(2);
+    expect(wrapper.find('.compact-text').text()).toEqual('Page 1 of 20');
+  });
+
+
 });
