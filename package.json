@@ -69,7 +69,6 @@
     "pearson-elements": "^1.11.1",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
-    "react-intl": "^2.0.1",
     "react-test-renderer": "^15.6.1",
     "prop-types": "^15.3.0",
     "sass-loader": "^6.0.0",
@@ -80,6 +79,7 @@
     "webpack-dev-server": "^2.3.0"
   },
   "keywords": [
-    "pearson-components"
+    "pearson-components",
+    "pagination"
   ]
 }

@@ -1,4 +1,4 @@
-import { Pagination } from '../index';
+import Pagination from '../index';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -60,7 +60,7 @@ function init() {
 
   ReactDOM.render(
     <Pagination pages={20} activePage={1} paginationType="compact"
-                compactText="Page 1 or 20 (or put whatever you want in here)" onSelect={onSelect} />,
+                compactText="Page 1 or 20 (or whatever text you want in here)" onSelect={onSelect} />,
     document.getElementById('demo-target7')
   );
 }

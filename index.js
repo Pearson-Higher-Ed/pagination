@@ -1,1 +1,1 @@
-export Pagination from './src/js/component-owner';
+export default from './src/js/component-owner';

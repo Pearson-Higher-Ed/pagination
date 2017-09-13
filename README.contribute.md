@@ -7,7 +7,6 @@ The use of Bower for dependencies is not sanctioned in Origami v2. Use npm with 
 | **Tech** | **Description** |**Learn More**|
 |----------|-------|---|
 | [React](https://facebook.github.io/react/)  |   Fast-rendering, composable client-side components.    | [Powering Up with React](https://www.codeschool.com/courses/powering-up-with-react) |
-| [React Intl](https://github.com/yahoo/react-intl/wiki) | API to handle translations, format dates, numbers, and strings. | |
 | [Babel](http://babeljs.io) |  Compiles ES6 to ES5 to enjoy the new version of JavaScript today. Also transpiles JSX via babel-preset-react. | [ES6 REPL](https://babeljs.io/repl/), [ES6 vs ES5](http://es6-features.org), [ES6 Katas](http://es6katas.org), [Pluralsight course](https://www.pluralsight.com/courses/javascript-fundamentals-es6)    |
 | [Webpack](http://webpack.github.io) | Bundles npm packages and our JS into a single file. Includes source maps and hot reloading via [webpack-dev-server](https://webpack.github.io/docs/webpack-dev-server.html). | [Quick Webpack How-to](https://github.com/petehunt/webpack-howto) [Pluralsight Course](https://www.pluralsight.com/courses/webpack-fundamentals)|
 | [Mocha](http://mochajs.org) | Automated tests with [expect](https://www.npmjs.com/package/expect) for assertions and [React Test Utils](https://facebook.github.io/react/docs/test-utils.html) for DOM testing without a browser. | [Pluralsight Course](https://www.pluralsight.com/courses/testing-javascript) |
@@ -16,11 +15,6 @@ The use of Bower for dependencies is not sanctioned in Origami v2. Use npm with 
 | [npm Scripts](https://docs.npmjs.com/misc/scripts)| Glues all this together in a handy automated build. | [Pluralsight course](https://www.pluralsight.com/courses/npm-build-tool-introduction), [Why not Gulp?](https://medium.com/@housecor/why-i-left-gulp-and-grunt-for-npm-scripts-3d6853dd22b8#.vtaziro8n)  |
 
 This archetype includes a working example component that puts the above to use.
-
-## Cross-browser Compatibility
-
-Inform the consumers of this component in [README.usage.md](README.usage.md) of any necessary polyfills and how to use
-[Polyfill.io](https://cdn.polyfill.io/v2/docs/examples) to construct requests for specific features.
 
 ## Continuous Integration
 
@@ -91,12 +85,9 @@ The project is wired to unit test with the popular [Mocha](https://mochajs.org/)
 
 It is also enabled for the following options:
 
-- [shallow rendering](https://facebook.github.io/react/docs/test-utils.html#shallow-rendering) with React's test utilities
-
-- Rendering a component into a detached DOM node in the document, using [jsdom](http://jaketrent.com/post/testing-react-with-jsdom/)
+- [shallow rendering](https://github.com/airbnb/enzyme) with AirBnb's Enzyme test suite
 
 Linting will run automatically prior to executing the test suite.
-
 
     npm test    
 
@@ -110,9 +101,6 @@ Determine if your component passes a series of checks for Origami v2 compliance.
 
 It is expected that applications will pass in translated text for dynamic content, and your component simply needs to 
 render whatever is passed in.
-
-**For text inherent to the component** (e.g. button text or input placeholder), add JSON translations for each supported 
-locale to the translations folder, and use the `locale` configuration parameter.
 
 ### Publish to Pearson npm Registry
 
