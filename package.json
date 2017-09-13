@@ -16,7 +16,7 @@
     "verify": "node ./node_modules/@pearson-components/npm-scripts/npm_scripts/verify.js"
   },
   "author": "Pearson",
-  "license": "MIT",
+  "license": "PEARSON PROPRIETARY AND CONFIDENTIAL INFORMATION SUBJECT TO NDA",
   "repository": {
     "type": "git",
     "url": "https://github.com/Pearson-Higher-Ed/pagination.git"
