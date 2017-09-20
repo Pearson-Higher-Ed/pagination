@@ -6,7 +6,20 @@ import ReactDOM from 'react-dom';
 // import MyPagination from '@pearson-components/[component-name]'
 
 function init() {
+  const onSelect = () => {};
 
+  // to Demo how QA would test
+  document.body.dispatchEvent(new CustomEvent('o.InitPagination', {
+    detail: {
+      elementId: 'pagination-target',
+      props: {
+        activePage: 1,
+        pages: 10,
+        onSelect: onSelect
+      }
+    }
+  }));
+  
   // Demo of a standard type control inside a React Container
   //
   class PaginationContainer extends React.Component {
@@ -72,8 +85,6 @@ function init() {
     <CompactPaginationContainer pages={6} activePage={1} groupSize={10} totalItems={54} />,
     document.getElementById('demo-target2')
   );
-
-  const onSelect = () => {};
 
   // Demo as stateless React component
   ReactDOM.render(
