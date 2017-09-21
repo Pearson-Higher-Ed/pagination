@@ -1,8 +1,6 @@
-/* global describe it beforeEach */
-
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Pagination from '../src/js/component-owner';
+import Pagination from '../src/js/Pagination';
 import PaginationButton from '../src/js/PaginationButton';
 
 describe('Pagination Owner Suite', () => {

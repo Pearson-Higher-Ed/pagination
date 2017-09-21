@@ -1,10 +1,10 @@
 import '../scss/pagination.scss';
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import PaginationButton from './PaginationButton';
 import uuid from 'uuid';
 
-class Pagination extends Component {
+class Pagination extends React.Component {
   static propTypes = {
     pages: PropTypes.number.isRequired,
     activePage: PropTypes.number,
