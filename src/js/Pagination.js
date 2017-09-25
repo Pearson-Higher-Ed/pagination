@@ -64,6 +64,22 @@ class Pagination extends React.Component {
     )];
   }
 
+  createEllipsis(key) {
+    return (
+      <PaginationButton
+        key={key}
+        disabled={true}
+        className="ellipsis"
+      >
+        <svg focusable="false"
+             role="img"
+             className="pe-icon--ellipsis-18">
+          <use xlinkHref="#ellipsis-18"></use>
+        </svg>
+      </PaginationButton>
+    )
+  }
+
   createFirstLast() {
 
     return [(
@@ -133,31 +149,13 @@ class Pagination extends React.Component {
     });
 
     if (startPage > 1) {
-      pageButtons[0] = (
-        <PaginationButton
-          key="frontEllipses"
-          disabled={true}
-          className="ellip">
-          <span>
-            {'\u2026'}
-          </span>
-        </PaginationButton>
-      );
+      pageButtons[0] = this.createEllipsis("frontEllipses");
     }
 
     const checkBackEllipses = displayButtons > 0;
 
     if (checkBackEllipses && last.props.eventKey > pageButtons[displayButtons - 1].props.eventKey + 1) {
-      pageButtons[displayButtons - 1] = (
-        <PaginationButton
-          key="backEllipses"
-          disabled={true}
-          className="ellip">
-          <span>
-            {'\u2026'}
-          </span>
-        </PaginationButton>
-      );
+      pageButtons[displayButtons - 1] = this.createEllipsis("backEllipses");
     }
     return [prev, first, ...pageButtons, last, next];
   }

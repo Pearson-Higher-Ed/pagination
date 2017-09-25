@@ -8,12 +8,16 @@
     background-color: transparent;
     border: 0;
 
+    &.ellipsis {
+      min-width: 32px;
+    }
     &:hover span, &:focus span {
-      border-bottom: 1px solid #6a7070;
+      border-bottom: 2px solid #6a7070;
     }
     &[aria-current] span {
       color: #252525;
       border-bottom: 2px solid #252525;
+      font-weight: bold;
     }
   }
   button:first-child,
@@ -36,16 +40,4 @@
     margin: 0 17px;
   }
 }
-/* concrete  #c7c7c7 */
 
-/*
-  .active {
-    color: #252525;
-    font-weight: bold;
-    cursor: default;
-  }
-
-  :disabled {
-    color: #D9D9D9;
-    background: #fff;
-  }*/
