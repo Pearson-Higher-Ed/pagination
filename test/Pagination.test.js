@@ -48,7 +48,7 @@ describe('Pagination Owner Suite', () => {
     expect(buttons.length).toEqual(9);
     expect(buttons.at(1).props().active).toEqual(true);
     expect(buttons.at(2).dive().text()).toEqual('2');
-    expect(buttons.at(6).dive().text()).toEqual('\u2026');
+    expect(buttons.at(6).find('svg').hasClass('pe-icon--ellipsis-18')).toEqual(true);
     expect(buttons.at(7).dive().text()).toEqual('100');
   });
 
@@ -64,7 +64,7 @@ describe('Pagination Owner Suite', () => {
      // should look like this: (<) 1 ... 96 97 98 99 100 (>)
     const buttons = wrapper.find(PaginationButton);
     expect(buttons.length).toEqual(9);
-    expect(buttons.at(2).dive().text()).toEqual('\u2026');
+    expect(buttons.at(2).find('svg').hasClass('pe-icon--ellipsis-18')).toEqual(true);
     expect(buttons.at(3).dive().text()).toEqual('96');
     expect(buttons.at(6).dive().text()).toEqual('99');
     expect(buttons.at(6).props().active).toEqual(true);
@@ -83,10 +83,10 @@ describe('Pagination Owner Suite', () => {
     // should look like this: (<) 1 ... 39 40 41 ... 100 (>)
     const buttons = wrapper.find(PaginationButton);
     expect(buttons.length).toEqual(9);
-    expect(buttons.at(2).dive().text()).toEqual('\u2026');
+    expect(buttons.at(2).find('svg').hasClass('pe-icon--ellipsis-18')).toEqual(true);
     expect(buttons.at(4).dive().text()).toEqual('40');
     expect(buttons.at(4).props().active).toEqual(true);
-    expect(buttons.at(6).dive().text()).toEqual('\u2026');
+    expect(buttons.at(6).find('svg').hasClass('pe-icon--ellipsis-18')).toEqual(true);
     expect(buttons.at(7).dive().text()).toEqual('100');
   });
 

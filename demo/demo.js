@@ -1,4 +1,4 @@
-import { Pagination, PaginationContainer, CompactGroupedContainer } from '../index';
+import { Pagination, PaginationContainer } from '../index';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -14,22 +14,33 @@ function init() {
     }
   }));
 
+  const onSelect = (eventKey) => {
+    console.log('page is', eventKey);
+    ReactDOM.render(
+      <Pagination pages={100} activePage={eventKey} onSelect={onSelect} />,
+      document.getElementById('demo-stateless1')
+    );
+  };
+
   // standard type demo
   ReactDOM.render(
-    <Pagination pages={100} activePage={1} />,
+    <Pagination pages={100} activePage={1} onSelect={onSelect} />,
     document.getElementById('demo-stateless1')
   );
 
+  const onSelectCompact = (eventKey) => {
+    console.log('page is', eventKey);
+    const compactText = `Page ${eventKey} of 10`;
+    ReactDOM.render(
+      <Pagination pages={10} activePage={eventKey} onSelect={onSelectCompact} paginationType="compact" compactText={compactText} />,
+      document.getElementById('demo-stateless2')
+    );
+  };
+
   // Compact Group Demo
   ReactDOM.render(
-    <Pagination pages={10} activePage={1} paginationType="compact" compactText="1-10 of 100" />,
+    <Pagination pages={10} activePage={10} paginationType="compact" compactText="Page 10 of 10" onSelect={onSelectCompact} />,
     document.getElementById('demo-stateless2')
-  );
-
-  // Compact Page Demo
-  ReactDOM.render(
-    <PaginationContainer pages={10} activePage={10} paginationType="compact" compactText="Page 10 of 10" />,
-    document.getElementById('demo-stateless3')
   );
 
   // Stateful demos
@@ -61,6 +72,12 @@ function init() {
   ReactDOM.render(
     <PaginationContainer pages={100} activePage={1} maxButtons={3} />,
     document.getElementById('demo-target6')
+  );
+
+  // Compact Page Demo
+  ReactDOM.render(
+    <PaginationContainer pages={10} activePage={10} paginationType="compact" compactText="Page 10 of 10" />,
+    document.getElementById('demo-target7')
   );
 
 }

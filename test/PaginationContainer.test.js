@@ -45,13 +45,13 @@ describe('PaginationContainer Owner Suite', () => {
     // should look like this: (<) 1 2 3 4 5 ... 100 (>)
     const buttons = wrapper.find(PaginationButton);
     expect(buttons.length).toEqual(9);
-    expect(buttons.at(6).text()).toEqual('\u2026');
+    expect(buttons.at(6).find('svg').hasClass('pe-icon--ellipsis-18')).toEqual(true);
     expect(buttons.at(7).text()).toEqual('100');
 
     // click the Last Page button and then should look like this: (<) 1 ... 96 97 98 99 100 (>)
     buttons.at(7).simulate('click');
     const newButtons = wrapper.find(PaginationButton);
-    expect(newButtons.at(2).text()).toEqual('\u2026');
+    expect(newButtons.at(2).find('svg').hasClass('pe-icon--ellipsis-18')).toEqual(true);
     expect(newButtons.at(3).text()).toEqual('96');
   });
 
