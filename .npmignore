@@ -7,7 +7,10 @@ build/.gitkeep
 build/dev*
 npm_scripts
 webpack.config.js
-test
-demo
-fonts
-main.js
+index.js
+
+/test
+/demo
+/fonts
+/coverage
+/src

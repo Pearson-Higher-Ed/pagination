@@ -4,17 +4,41 @@
     <title>Demo</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="elements.css">
 </head>
 <body>
-    <!-- Customize the demo for your component -->
-    <h1>Component Archetype Demo</h1>
-    <p>Styled using the Elements SDK.</p>
-    <br />
-    <div id="demo-target1"></div>
-    <br />
 
-    <h2> Rendered with react </h2>
+    <!-- Icons -->
+    <script>
+        if (document.body.children[0].nodeName != 'svg') {
+            var pe_ajax = new XMLHttpRequest();
+            pe_ajax.open("GET", "https://unpkg.com/pearson-elements@1.13.3/dist/icons/p-icons-sprite-1.1.svg", true);
+            pe_ajax.responseType = "document";
+            pe_ajax.onload = function(e) {
+                document.body.insertBefore(
+                  pe_ajax.responseXML.documentElement,
+                  document.body.childNodes[0]
+                );
+            };
+            pe_ajax.send();
+        }
+    </script>
+
+    <!-- Customize the demo for your component -->
+
+    <h1>Component Archetype Demo</h1>
+
+    <h2> Attached to DOM via an Event</h2>
+    <div id="pagination-target"></div>
+    <br/>
+    <h2> Rendered as a stateless React Component</h2>
+    <h4> Standard Type </h4>
+    <div id="demo-stateless1"></div>
+    <h4> Compact Type </h4>
+    <div id="demo-stateless2"></div>
+    <br/>
+    <h2> Rendered inside stateful React Containers </h2>
+    <h4> Standard Type </h4>
+    <div id="demo-target1"></div>
     <h4> Ellipses at end </h4>
     <div id="demo-target2"></div>
     <h4> No ellipses (max pages =< items) </h4>
@@ -23,15 +47,19 @@
     <div id="demo-target4"></div>
     <h4> Ellipses at both beginning & end </h4>
     <div id="demo-target5"></div>
+    <h4> Max Buttons set to 3</h4>
+    <div id="demo-target6"></div>
+    <h4> Compact Type </h4>
+    <div id="demo-target7"></div>
 
-    <!-- External dependencies for React -->
-    <script src="../node_modules/react/dist/react.js"></script>
-    <script src="../node_modules/react-dom/dist/react-dom.js"></script>
+    <!-- Provide React and ReactDOM as a dependency external to the component -->
+    <!-- (not using minified packages in demo for enhanced developer debugging) -->
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
     <!-- CustomEvent polyfill is for IE, Intl.js polyfill is for Safari -->
-    <script src="https://cdn.polyfill.io/v2/polyfill.js?features=CustomEvent,Intl.~locale.en,Intl.~locale.fr"></script>
-    <!-- Locally hosted demo server -->
-    <script src="http://localhost:8081/webpack-dev-server.js"></script>
-    <!-- Demo build of component -->
-    <script src="../build/dev.pagination.js"></script>
+    <script src="https://cdn.polyfill.io/v2/polyfill.js?features=CustomEvent"></script>
+    <!-- Demo build of component injected on build -->
+    <!-- Build component to view demo: npm start -->
+    <!-- View at: http://localhost:8081/pagination -->
 </body>
 </html>

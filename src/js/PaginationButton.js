@@ -1,13 +1,15 @@
 import React from 'react';
 
-const PaginationButton = ({children, active, onSelect, disabled, eventKey}) => {
+const PaginationButton = ({children, active, onSelect, disabled, className, eventKey}) => {
   const select = (event) => {
     return onSelect(eventKey, event);
   };
 
   return (
     <button
-      className={active ? 'active pe-btn pagination': 'pe-btn pagination'}
+      className={className}
+      type="button"
+      {...active ? {'aria-current': 'page'} : {}}
       onClick={select}
       disabled={disabled}
     >
