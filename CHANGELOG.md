@@ -33,7 +33,7 @@
 * Ignore component-specific styles for unit testing. ([a8bf34e](https://github.com/Pearson-Higher-Ed/pagination/commit/a8bf34e))
 * Reference release script in npm_scripts, and lint demo script. ([896ea18](https://github.com/Pearson-Higher-Ed/pagination/commit/896ea18))
 * update npm-scripts dependency for dev-setup cross-platform compatibility ([e7914b2](https://github.com/Pearson-Higher-Ed/pagination/commit/e7914b2))
-* Use verify npm script to ensure package name has [@pearson](https://github.com/pearson)-components scope. ([772586f](https://github.com/Pearson-Higher-Ed/pagination/commit/772586f))
+* Use verify npm script to ensure package name has [@pearson-components](https://github.com/pearson-components) scope. ([772586f](https://github.com/Pearson-Higher-Ed/pagination/commit/772586f))
 
 
 ### Features
@@ -41,6 +41,3 @@
 * **component-archetype:** run demo tests against feature branch in ci ([073f975](https://github.com/Pearson-Higher-Ed/pagination/commit/073f975))
 * **demo:** Add event listener for card comments. ([8ed5d8f](https://github.com/Pearson-Higher-Ed/pagination/commit/8ed5d8f))
 * Check package.json main field to ensure it is changed to the actual component name. ([1046e41](https://github.com/Pearson-Higher-Ed/pagination/commit/1046e41))
-
-
-
