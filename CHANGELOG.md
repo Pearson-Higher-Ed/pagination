@@ -1,5 +1,12 @@
-<a name="0.3.0"></a>
-## [0.3.0](https://github.com/Pearson-Higher-Ed/pagination/compare/v0.2.2...v0.3.0) (2017-10-02)
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/Pearson-Higher-Ed/pagination/compare/v0.2.2...v0.3.1) (2017-10-03)
+
+
+### Bug Fixes
+
+* Required package added ([04b99c9](https://github.com/Pearson-Higher-Ed/pagination/commit/04b99c9))
+
+
 
 <a name="0.2.2"></a>
 ## [0.2.2](https://github.com/Pearson-Higher-Ed/pagination/compare/v0.2.1...v0.2.2) (2017-09-11)
@@ -44,3 +51,6 @@
 * **component-archetype:** run demo tests against feature branch in ci ([073f975](https://github.com/Pearson-Higher-Ed/pagination/commit/073f975))
 * **demo:** Add event listener for card comments. ([8ed5d8f](https://github.com/Pearson-Higher-Ed/pagination/commit/8ed5d8f))
 * Check package.json main field to ensure it is changed to the actual component name. ([1046e41](https://github.com/Pearson-Higher-Ed/pagination/commit/1046e41))
+
+
+
