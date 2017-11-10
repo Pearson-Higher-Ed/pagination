@@ -1,7 +1,7 @@
 import React from 'react';
 import Pagination from './Pagination';
 
-class PaginationContainer extends React.Component {
+export default class PaginationContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = { activePage: props.activePage };
@@ -26,5 +26,3 @@ class PaginationContainer extends React.Component {
     );
   }
 }
-
-export default PaginationContainer;
