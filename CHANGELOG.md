@@ -1,5 +1,10 @@
-<a name="1.0.1"></a>
-## [1.0.1](https://github.com/Pearson-Higher-Ed/pagination/compare/v0.3.2...v1.0.1) (2017-10-03)
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/Pearson-Higher-Ed/pagination/compare/v0.3.2...v1.0.2) (2017-11-13)
+
+
+### Features
+
+* Integrate Sonar ([6b0b240](https://github.com/Pearson-Higher-Ed/pagination/commit/6b0b240))
 
 
 
