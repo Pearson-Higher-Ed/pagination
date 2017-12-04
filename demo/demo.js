@@ -32,14 +32,26 @@ function init() {
     console.log('page is', eventKey);
     const compactText = `Page ${eventKey} of 10`;
     ReactDOM.render(
-      <Pagination pages={10} activePage={eventKey} onSelect={onSelectCompact} paginationType="compact" compactText={compactText} />,
+      <Pagination
+        pages={10}
+        activePage={eventKey}
+        onSelect={onSelectCompact}
+        paginationType="compact"
+        compactText={compactText}
+      />,
       document.getElementById('demo-stateless2')
     );
   };
 
   // Compact Group Demo
   ReactDOM.render(
-    <Pagination pages={10} activePage={10} paginationType="compact" compactText="Page 10 of 10" onSelect={onSelectCompact} />,
+    <Pagination
+      pages={10}
+      activePage={10}
+      paginationType="compact"
+      compactText="Page 10 of 10"
+      onSelect={onSelectCompact}
+    />,
     document.getElementById('demo-stateless2')
   );
 

@@ -45,7 +45,7 @@
     "verbose": true
   },
   "devDependencies": {
-    "@pearson-components/npm-scripts": "^0.5.0",
+    "@pearson-components/npm-scripts": "^0.5.6",
     "babel-core": "^6.23.1",
     "babel-eslint": "^7.1.1",
     "babel-jest": "^18.0.0",
