@@ -11,6 +11,12 @@ Install and save in your package.json:
 
     npm install @pearson-components/pagination --save
 
+Additionally, since this component is published to NPM, it can be imported into the application through a script tag.
+
+```html
+<script type="text/javascript" src="https://unpkg.com/@pearson-components/pagination@1.0.2/build/dist.pagination.js"></script>
+```
+
 Import Pagination component:
 
     import Pagination from '@pearson-components/pagination';
@@ -21,7 +27,7 @@ Import Pagination component:
 - `activePage` (number) defaults to 1.  Corresponds to highlighted page button and is centered in component unless it's near the beginning or end of page list.
 - `onSelect` (function) callback fired when a button is clicked (required).
 - `maxButtons` (number) defaults to 5. Determines the number of page buttons to show. Prev and Next buttons are always shown. First and Last page buttons are always shown. The number of buttons in between will not exceed maxButtons.
-- `prevTitle` (string) defaults to 'previous' and is the title of the (<) button. For i18n, set to translation of 'previous' 
+- `prevTitle` (string) defaults to 'previous' and is the title of the (<) button. For i18n, set to translation of 'previous'
 - `nextTitle` (string) defaults to 'next' and is the title of the (>) button. For i18n, set to translation of 'next'
 - `paginationType` (string) defaults to 'standard'.  May be either 'standard' or 'compact'
 - `compactText` (string) only used if paginationType is 'compact'.  For i18n, suggested to be translated value of 'Page {activePage} of {pages}', but can be any text
