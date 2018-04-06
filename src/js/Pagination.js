@@ -24,7 +24,7 @@ class Pagination extends React.Component {
     paginationType: 'standard'
   };
 
-  // add responsive behavior
+  // add screen resize listener
   constructor() {
     super();
     this.state = {
@@ -139,6 +139,8 @@ class Pagination extends React.Component {
     // if no buttons to the left when only displaying maxButtons, don't show ellipses on left
     // if no buttons to the right when only displaying maxButtons, don't show ellipses on right
     // otherwise show ellipses on left and/or right
+
+    //change display button number in the case of screen smaller than 768px
     let displayButtons = this.props.maxButtons;
     if (smallScreen == true) {
       displayButtons = 3;
