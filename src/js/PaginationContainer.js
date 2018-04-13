@@ -4,11 +4,14 @@ import Pagination from './Pagination';
 export default class PaginationContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { activePage: props.activePage };
+    this.state = { 
+      activePage: props.activePage,
+      compactText: props.compactText };
   }
 
   setActive = (eventKey) => {
     this.setState({ activePage: eventKey  });
+    this.setState({ compactText: `Page ${eventKey} of ${this.props.pages}`});
   };
 
   render() {
@@ -20,7 +23,7 @@ export default class PaginationContainer extends React.Component {
         maxButtons={this.props.maxButtons}
         prevTitle={this.props.prevTitle}
         nextTitle={this.props.nextTitle}
-        compactText={this.props.compactText}
+        compactText={this.state.compactText}
         paginationType={this.props.paginationType}
       />
     );
