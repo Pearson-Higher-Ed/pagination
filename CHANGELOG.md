@@ -1,10 +1,30 @@
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/Pearson-Higher-Ed/pagination/compare/v1.0.2...v1.1.0) (2018-04-23)
+
+
+### Bug Fixes
+
+* update package-lock.json to fix security vulnerability ([145f0a4](https://github.com/Pearson-Higher-Ed/pagination/commit/145f0a4))
+
+
+### Features
+
+* Bring in new npm_scripts & setup gh-pages ([8190efd](https://github.com/Pearson-Higher-Ed/pagination/commit/8190efd))
+
+
+
 <a name="1.0.2"></a>
-## [1.0.2](https://github.com/Pearson-Higher-Ed/pagination/compare/v0.3.2...v1.0.2) (2017-11-13)
+## [1.0.2](https://github.com/Pearson-Higher-Ed/pagination/compare/v1.0.1...v1.0.2) (2017-11-13)
 
 
 ### Features
 
 * Integrate Sonar ([6b0b240](https://github.com/Pearson-Higher-Ed/pagination/commit/6b0b240))
+
+
+
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/Pearson-Higher-Ed/pagination/compare/v0.3.2...v1.0.1) (2017-10-03)
 
 
 
