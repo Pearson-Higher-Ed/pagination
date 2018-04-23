@@ -7,6 +7,9 @@
     color: #6a7070;
     background-color: transparent;
     border: 0;
+    &:not([disabled]) {
+      cursor: pointer;
+    }
 
     &.ellipsis {
       min-width: 32px;

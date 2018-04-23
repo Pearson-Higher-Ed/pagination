@@ -24,6 +24,25 @@ class Pagination extends React.Component {
     paginationType: 'standard'
   };
 
+  // add screen resize listener
+  constructor() {
+    super();
+    this.state = {
+      width: window.innerWidth,
+    };
+  }
+
+  componentWillMount() {
+    window.addEventListener('resize', this.handleWindowSizeChange);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleWindowSizeChange);
+  }
+
+  handleWindowSizeChange = () => {
+    this.setState({ width: window.innerWidth });
+  };
+
   createPrevNext() {
     const i_id='_'+uuid.v1();
 
@@ -102,7 +121,7 @@ class Pagination extends React.Component {
   }
 
 
-  renderPageButtons() {
+  renderPageButtons(smallScreen) {
     const [prev, next] = this.createPrevNext();
 
     if (this.props.paginationType === 'compact') {
@@ -121,10 +140,19 @@ class Pagination extends React.Component {
     // if no buttons to the right when only displaying maxButtons, don't show ellipses on right
     // otherwise show ellipses on left and/or right
 
+    //change display button number in the case of screen smaller than 768px
     let displayButtons = this.props.maxButtons;
-    if (this.props.pages < this.props.maxButtons + 2) {
-      displayButtons = this.props.pages - 2;
+    if (smallScreen == true) {
+      displayButtons = 3;
+      if (this.props.pages < 5) {
+        displayButtons = this.props.pages - 2;
+      }
+    } else {
+      if (this.props.pages < this.props.maxButtons + 2) {
+        displayButtons = this.props.pages - 2;
+      }
     }
+    
 
     let startPage = (this.props.activePage - 1) - parseInt(displayButtons / 2, 10);
     if (this.props.activePage <= parseInt(displayButtons / 2, 10) + 1) {
@@ -161,11 +189,21 @@ class Pagination extends React.Component {
   }
 
   render() {
-    return (
-      <nav aria-label="pagination" data-reactroot="" className="pe-pagination">
-        {this.renderPageButtons()}
-      </nav>
-    );
+    const { width } = this.state;
+    const isSmallScreen = width <= 768;
+    if (isSmallScreen) { 
+      return (
+        <nav aria-label="pagination" data-reactroot="" className="pe-pagination">
+          {this.renderPageButtons(true)}
+        </nav>
+      ); 
+    } else {
+      return (
+        <nav aria-label="pagination" data-reactroot="" className="pe-pagination">
+          {this.renderPageButtons(false)}
+        </nav>
+      );
+    }
   }
 }
 
