@@ -4,6 +4,7 @@
     <title>Demo</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/@pearson-components/elements-sdk@1.15.2/build/css/elements.css">
 </head>
 <body>
 
@@ -11,7 +12,7 @@
     <script>
         if (document.body.children[0].nodeName != 'svg') {
             var pe_ajax = new XMLHttpRequest();
-            pe_ajax.open("GET", "https://unpkg.com/pearson-elements@1.13.3/dist/icons/p-icons-sprite-1.1.svg", true);
+            pe_ajax.open("GET", "https://unpkg.com/@pearson-components/elements-sdk/build/icons/p-icons-sprite-1.1.svg", true);
             pe_ajax.responseType = "document";
             pe_ajax.onload = function(e) {
                 document.body.insertBefore(

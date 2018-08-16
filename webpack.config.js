@@ -6,20 +6,18 @@ const index             = `${__dirname}/index.html`;
 const demo              = `${__dirname}/demo/demo.js`;
 const eventing          = `${__dirname}/demo/eventing.js`;
 const component         = `${__dirname}/index.js`;
-const icons             = `${__dirname}/node_modules/pearson-elements/dist/icons/p-icons-sprite-1.1.svg`;
-const elements          = `${__dirname}/node_modules/pearson-elements/dist/css/elements.css`;
-const fontsDir          = `${__dirname}/node_modules/pearson-elements/dist/fonts/`;
-const fonts             = fs.readdirSync(fontsDir, 'utf-8');
-const fontsList         = fonts.map(font => fontsDir + font);
+// const icons             = `${__dirname}/node_modules/pearson-elements/dist/icons/p-icons-sprite-1.1.svg`;
+// const elements          = `${__dirname}/node_modules/pearson-elements/dist/css/elements.css`;
+// const fontsDir          = `${__dirname}/node_modules/pearson-elements/dist/fonts/`;
+// const fonts             = fs.readdirSync(fontsDir, 'utf-8');
+// const fontsList         = fonts.map(font => fontsDir + font);
 
 
 module.exports = {
   entry: {
     demo             : [ demo ],
-    dev              : [ elements, icons ],
     eventInterface   : [ eventing ],
-    dist             : [ component ],
-    fonts            : fontsList
+    dist             : [ component ]
   },
   output: {
     path          : path.resolve(__dirname, 'build'),
