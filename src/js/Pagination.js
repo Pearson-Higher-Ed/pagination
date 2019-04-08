@@ -100,24 +100,37 @@ class Pagination extends React.Component {
   }
 
   createFirstLast() {
-
-    return [(
-      <PaginationButton
-        key="firstItem"
-        active={this.props.activePage === 1}
-        onSelect={this.props.onSelect}
-        eventKey={1}>
-        <span>1</span>
-      </PaginationButton>
-    ), (
-      <PaginationButton
-        key="maxpages"
-        active={this.props.activePage === this.props.pages}
-        onSelect={this.props.onSelect}
-        eventKey={this.props.pages}>
-        <span>{this.props.pages}</span>
-      </PaginationButton>
-    )];
+    if (this.props.pages === 1) {
+      return [
+        (
+          <PaginationButton
+            key="firstItem"
+            active={this.props.activePage === 1}
+            onSelect={this.props.onSelect}
+            eventKey={1}>
+            <span>1</span>
+          </PaginationButton>
+        )
+      ]
+    } else {
+      return [(
+        <PaginationButton
+          key="firstItem"
+          active={this.props.activePage === 1}
+          onSelect={this.props.onSelect}
+          eventKey={1}>
+          <span>1</span>
+        </PaginationButton>
+      ), (
+        <PaginationButton
+          key="maxpages"
+          active={this.props.activePage === this.props.pages}
+          onSelect={this.props.onSelect}
+          eventKey={this.props.pages}>
+          <span>{this.props.pages}</span>
+        </PaginationButton>
+      )];
+    }
   }
 
 
@@ -152,7 +165,7 @@ class Pagination extends React.Component {
         displayButtons = this.props.pages - 2;
       }
     }
-    
+
 
     let startPage = (this.props.activePage - 1) - parseInt(displayButtons / 2, 10);
     if (this.props.activePage <= parseInt(displayButtons / 2, 10) + 1) {
@@ -191,12 +204,12 @@ class Pagination extends React.Component {
   render() {
     const { width } = this.state;
     const isSmallScreen = width <= 768;
-    if (isSmallScreen) { 
+    if (isSmallScreen) {
       return (
         <nav aria-label="pagination" data-reactroot="" className="pe-pagination">
           {this.renderPageButtons(true)}
         </nav>
-      ); 
+      );
     } else {
       return (
         <nav aria-label="pagination" data-reactroot="" className="pe-pagination">

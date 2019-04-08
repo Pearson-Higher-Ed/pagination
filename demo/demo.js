@@ -24,7 +24,7 @@ function init() {
 
   // standard type demo
   ReactDOM.render(
-    <Pagination pages={100} activePage={1} onSelect={onSelect} />,
+    <Pagination pages={10} activePage={1} onSelect={onSelect} />,
     document.getElementById('demo-stateless1')
   );
 
