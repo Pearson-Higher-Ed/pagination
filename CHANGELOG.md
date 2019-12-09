@@ -1,5 +1,5 @@
-<a name="1.1.2"></a>
-## [1.1.2](https://github.com/Pearson-Higher-Ed/pagination/compare/v1.1.1...v1.1.2) (2019-04-09)
+<a name="1.1.3"></a>
+## [1.1.3](https://github.com/Pearson-Higher-Ed/pagination/compare/v1.1.1...v1.1.3) (2019-12-09)
 
 
 
