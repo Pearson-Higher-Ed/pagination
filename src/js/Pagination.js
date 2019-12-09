@@ -49,6 +49,7 @@ class Pagination extends React.Component {
     return [(
       <PaginationButton
         key="prev"
+        className={"prev"}
         active={false}
         disabled={this.props.activePage === 1}
         onSelect={this.props.onSelect}
@@ -66,6 +67,7 @@ class Pagination extends React.Component {
     ), (
       <PaginationButton
         key="next"
+        className={"next"}
         active={false}
         disabled={this.props.activePage === this.props.pages}
         onSelect={this.props.onSelect}
@@ -118,6 +120,7 @@ class Pagination extends React.Component {
           key="firstItem"
           active={this.props.activePage === 1}
           onSelect={this.props.onSelect}
+          number={1}
           eventKey={1}>
           <span>1</span>
         </PaginationButton>
@@ -126,7 +129,9 @@ class Pagination extends React.Component {
           key="maxpages"
           active={this.props.activePage === this.props.pages}
           onSelect={this.props.onSelect}
-          eventKey={this.props.pages}>
+          eventKey={this.props.pages}
+          number={this.props.pages}
+        >
           <span>{this.props.pages}</span>
         </PaginationButton>
       )];
@@ -183,7 +188,8 @@ class Pagination extends React.Component {
           active={this.props.activePage === (item +1)}
           key={item+1}
           eventKey={item+1}
-          onSelect={this.props.onSelect}>
+          onSelect={this.props.onSelect}
+          number={item + 1}>
           <span>{item +1}</span>
         </PaginationButton>
       );
